@@ -1,20 +1,16 @@
-import React from 'react'
-import './Signup.css';
-import Button from '@material-ui/core/Button';
+import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faGoogle,
-    faFacebook,
-    faTwitter
-  } from '@fortawesome/free-brands-svg-icons';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,38 +41,24 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-  
-  icons: {
-    margin: theme.spacing(1)
-  }
 }));
 
-function Signup() {
+export default function SignInSide() {
   const classes = useStyles();
 
-    return (
-      <Grid container component="main" className={classes.root}>
+  return (
+    <Grid container component="main" className={classes.root}>
+      <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Sign in
           </Typography>
           <form className={classes.form} noValidate>
-          <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-            />
             <TextField
               variant="outlined"
               margin="normal"
@@ -98,9 +80,11 @@ function Signup() {
               type="password"
               id="password"
               autoComplete="current-password"
-              placeholder="6+ Characters, 1 UpperCase, 1 number"
             />
-
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
             <Button
               type="submit"
               fullWidth
@@ -108,29 +92,25 @@ function Signup() {
               color="primary"
               className={classes.submit}
             >
-              Create Account
+              Sign In
             </Button>
-        <Grid container justify='center' className={classes.icons}>
-        <Box m={1} pt={1} >
-          <FontAwesomeIcon icon={faGoogle} size='2x'/>
-          <FontAwesomeIcon icon={faFacebook} size='2x'/>
-          <FontAwesomeIcon icon={faTwitter} size='2x'/>
-        </Box>
-        </Grid>
-            <Grid container justify='center'>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
               <Grid item>
-                <Link href="#" variant="body1">
-                  {"Already have an account? Login"}
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
             </Grid>
+            <Box mt={5}>
+            </Box>
           </form>
-
         </div>
-        </Box>
       </Grid>
-      </Grid>
-    )
+    </Grid>
+  );
 }
-
-export default Signup

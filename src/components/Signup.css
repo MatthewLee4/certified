@@ -15,6 +15,7 @@
   .page-wrapper {
     margin: 50px;
     padding: 20px;
+    background-image: 'url(https://source.unsplash.com/random)';
   }
   
   .row {
@@ -62,3 +63,11 @@ input[type=text] {
     color: white;
     height: 30px;
   }
+
+image {
+    background-image: 'url(https://source.unsplash.com/random)';
+    background-repeat: 'no-repeat';
+    background-size: 'cover';
+    background-position: 'center';
+  }
+  
