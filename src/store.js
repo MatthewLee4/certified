@@ -1,4 +1,5 @@
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
+import {someReducer} from "./reducers/reducers"
 import { createStore } from "redux"
 
 const initState = {
@@ -6,4 +7,4 @@ const initState = {
     users: []
 }
 
-export const store = createStore(null, initState);
+export const store = createStore(someReducer, initState);
