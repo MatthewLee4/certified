@@ -54,6 +54,14 @@ const useStyles = makeStyles((theme) => ({
 function Signup() {
   const classes = useStyles();
 
+  const [data, setData] = React.useState(null); 
+
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+
     return (
       <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -62,6 +70,7 @@ function Signup() {
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
           </Avatar>
+          <p>{!data ? "Loading..." : data}</p>
           <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
