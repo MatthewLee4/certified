@@ -98,8 +98,8 @@ function Signup(props) {
     });    
   }
 
-  // axios.get('/users/')
-  //   .then((res) => console.log(res.data));
+  axios.get('/users/')
+    .then((res) => console.log(res.data));
       
 
   return (
