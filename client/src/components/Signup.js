@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Signup.css';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -51,95 +51,139 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Signup() {
+function Signup(props) {
   const classes = useStyles();
+  const axios = require('axios').default;
 
-  const [data, setData] = React.useState(null); 
+  const [user, setUser] = useState({
+    name : "",
+    email: "",
+    password: ""
+  }); 
+  
+  console.log(user);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  const handleChange = (e) => {
+    const {id , value} = e.target   
+    setUser(prevState => ({
+        ...prevState,
+        [id] : value
+    }))
+  }
 
-    return (
-      <Grid container component="main" className={classes.root}>
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    const payload = {
+      "name":user.name,
+      "email":user.email,
+      "password":user.password,
+    }
+    
+    axios.post('/users/add', payload)
+    .then(function (response) {
+      if(response.status === 200){
+        setUser(prevState => ({
+          ...prevState,
+          'successMessage' : 'Registration successful. Redirecting to home page..'
+        }))
+        //redirectToHome();
+        //props.showError(null)
+      } else{
+        console.log("Something went wrong")
+        //props.showError("Some error ocurred");
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
+
+  // axios.get('/users/')
+  //   .then((res) => console.log(res.data));
+      
+
+  return (
+    <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-          </Avatar>
-          <p>{!data ? "Loading..." : data}</p>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
-          <form className={classes.form} noValidate>
-          <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
-              name="name"
-              autoComplete="name"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              placeholder="6+ Characters, 1 UpperCase, 1 number"
-            />
-
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Create Account
-            </Button>
-        <Grid container justify='center' className={classes.icons}>
-        <Box m={1} pt={1} >
-          <FontAwesomeIcon icon={faGoogle} size='2x'/>
-          <FontAwesomeIcon icon={faFacebook} size='2x'/>
-          <FontAwesomeIcon icon={faTwitter} size='2x'/>
-        </Box>
-        </Grid>
-            <Grid container justify='center'>
-              <Grid item>
-                <Link href="/signin" variant="body1">
-                  {"Already have an account? Login"}
-                </Link>
+        <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign Up
+            </Typography>
+            <form className={classes.form} noValidate>
+              <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="name"
+                  autoComplete="name"
+                  value={user.name}
+                  onChange={handleChange}
+                  autoFocus
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  value={user.email}
+                  onChange={handleChange}
+                  autoFocus
+                />
+                <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  placeholder="6+ Characters, 1 UpperCase, 1 number"
+                  value={user.password}
+                  onChange={handleChange}
+                />
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={handleSubmitClick}
+                >
+                  Create Account
+                </Button>
+              <Grid container justify='center' className={classes.icons}>
+                <Box m={1} pt={1} >
+                  <FontAwesomeIcon icon={faGoogle} size='2x'/>
+                  <FontAwesomeIcon icon={faFacebook} size='2x'/>
+                  <FontAwesomeIcon icon={faTwitter} size='2x'/>
+                </Box>
               </Grid>
-            </Grid>
-          </form>
-
-        </div>
+              <Grid container justify='center'>
+                <Grid item>
+                  <Link href="/signin" variant="body1">
+                    {"Already have an account? Login"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
         </Box>
       </Grid>
-      </Grid>
-    )
+    </Grid>
+  )
 }
 
 export default Signup
