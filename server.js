@@ -25,6 +25,13 @@ const testsRouter = require('./routes/tests');
 app.use('/users', usersRouter); 
 app.use('/tests', testsRouter);
 
+app.use(express.static(path.join(__dirname, '/client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
