@@ -8,13 +8,12 @@ const initState = {
     users: []
 }
 
-export const someReducer = (state = initState,action) => {
+export default function someReducer(state = initState, action)  {
     switch(action.type){
         case UPDATE_STORE: 
             return ({
                 state
             })
-      
         default:
             return state
     }
