@@ -200,20 +200,20 @@ function Signup(props) {
 
 
 // allows us to use pieces of our state as props in our component 
-// const mapStateToProps = ( state , ownProps) => {
-//   return{
-//     users: state.users
-//   }
-// };
+const mapStateToProps = ( state , ownProps) => {
+  return{
+    users: state.users
+  }
+};
 
 // biends the dispatch of the store to our actions, that can be passed into our component as props
-// const mapDispatchToProps = ( dispatch ) => {
-//   return{
-//     newUser: ( payload ) => {
-//       dispatch(newUser( payload ))
-//     }
-//   }
-// };
+const mapDispatchToProps = ( dispatch ) => {
+  return{
+    newUser: ( payload ) => {
+      dispatch(newUser( payload ))
+    }
+  }
+};
 
-// export default connect( mapStateToProps, mapDispatchToProps )( Signup );
-export default Signup
+export default connect( mapStateToProps, mapDispatchToProps )( Signup );
+// export default Signup
