@@ -15,6 +15,9 @@ import {
   } from '@fortawesome/free-brands-svg-icons';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import { connect } from "react-redux";
+import { newUser } from "../actions/new_user";
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,6 +66,11 @@ function Signup(props) {
   
   console.log(user);
 
+  const helloUser = data => {
+    props.newUser( data );
+    console.log("Dispatched to the store")
+  }
+
   const handleChange = (e) => {
     const {id , value} = e.target   
     setUser(prevState => ({
@@ -96,10 +104,13 @@ function Signup(props) {
     .catch(function (error) {
       console.log(error);
     });    
+    
+    helloUser( payload );
   }
 
-  axios.get('/users/')
-    .then((res) => console.log(res.data));
+
+  // axios.get('/users/')
+  //   .then((res) => console.log(res.data));
       
 
   return (
@@ -186,4 +197,23 @@ function Signup(props) {
   )
 }
 
+
+
+// allows us to use pieces of our state as props in our component 
+// const mapStateToProps = ( state , ownProps) => {
+//   return{
+//     users: state.users
+//   }
+// };
+
+// biends the dispatch of the store to our actions, that can be passed into our component as props
+// const mapDispatchToProps = ( dispatch ) => {
+//   return{
+//     newUser: ( payload ) => {
+//       dispatch(newUser( payload ))
+//     }
+//   }
+// };
+
+// export default connect( mapStateToProps, mapDispatchToProps )( Signup );
 export default Signup
