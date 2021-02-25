@@ -1,7 +1,12 @@
 import { a } from "../actions/constants";
-import { store } from "../store";
+// import { initState } from "../store";
 
-export default function userReducer( state = store , action ) {
+const initState = {
+    test: [],
+    users: []
+}
+
+export default function userReducer( state = initState , action ) {
     
     const {type} = action
     switch(type) {
@@ -12,5 +17,7 @@ export default function userReducer( state = store , action ) {
                     ...action.payload
                 ]
             }
+            default:
+                return state 
     }   
 }
