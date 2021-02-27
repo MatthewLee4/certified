@@ -4,10 +4,14 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Test from "./components/Test";
 import Protected from './components/Protected';
+import AboutUs from "./components/About";
+import ContactUs from "./components/Contact";
+import Profile from "./components/Profile";
 
 const AppRouter = (props) => {
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
   return (
     <div>
@@ -24,9 +28,22 @@ const AppRouter = (props) => {
                 <Test />
             </Route> 
           </Protected>
-       
-        </Switch>
+          
+          <Route path="/test" exact>
+              <Test />
+          </Route>
+          <Route path="/profile" exact>
+              <Profile />
+          </Route> 
+          <Route path="/about" exact>
+              <AboutUs />
+          </Route> 
+          <Route path="/contact" exact>
+              <ContactUs />
+          </Route> 
 
+          
+        </Switch>
       </BrowserRouter>
     </div>
   );

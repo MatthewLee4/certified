@@ -1,15 +1,15 @@
 import React from 'react';
 import MenuAppBar from './Header'
 
-const Test = () => {
+const Profile = () => {
     return (
         <>
         <MenuAppBar />
         <div>
-            <h1>TEST PAGE</h1>
+            <h1>PROFILE PAGE</h1>
         </div>
         </>
     )
 };
 
-export default Test;
+export default Profile;
