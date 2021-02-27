@@ -10,10 +10,12 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: "#12263A"
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -28,7 +30,13 @@ const useStyles = makeStyles(theme => ({
     alignItems: "flex-end",
     paddingLeft: "50%",
     justifyContent: "space-evenly",
-    flex: 1
+    flex: 1,
+  },
+  buttons: {
+    backgroundColor: "#F4D1AE"
+  },
+  logo: {
+    maxWidth: 40
   }
 }));
 
@@ -70,8 +78,9 @@ const Header = props => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.root} position="static">
         <Toolbar>
+          <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/test")} />
           <Typography variant="h6" className={classes.title} onClick={() => handleButtonClick("/test")}>
             Certified
           </Typography>
@@ -113,23 +122,23 @@ const Header = props => {
             </>
           ) : (
             <div className={classes.headerOptions}>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/profile")}
               >
                 PROFILE
               </Button>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/contact")}
               >
-                CONTACT US
+                CONTACT
               </Button>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/about")}
               >
-                ABOUT US
+                ABOUT
               </Button>
             </div>
           )}
