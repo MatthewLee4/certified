@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Alert from '@material-ui/lab/Alert'
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
@@ -11,6 +12,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,8 +45,52 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
   const classes = useStyles();
+  const axios = require('axios').default;
+  const history = useHistory();
+
+  const [userLogin, setUserLogin] = useState({
+    email: "",
+    password: ""
+  }); 
+  const [error, setError] = useState(false);
+  
+  console.log(userLogin);
+
+  const handleChange = (e) => {
+    const {id , value} = e.target   
+    setUserLogin(prevState => ({
+        ...prevState,
+        [id] : value
+    }))
+  }
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    const payload = {
+      "email":userLogin.email,
+      "password":userLogin.password,
+    }
+
+    axios.post('/auth/signin', payload)
+    .then(function (response) {
+      console.log(response)
+      if (response.data == "Wrong Email or Password"){
+        setError(true);
+      }
+      else {
+        console.log(response)
+        props.setIsLoggedIn(true);
+        history.push("/test")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
+
+
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -67,6 +113,8 @@ export default function SignInSide() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={userLogin.email}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -79,6 +127,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={userLogin.password}
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -90,9 +140,11 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmitClick}
             >
               Sign In
             </Button>
+            { error === true ? <Alert severity="error">Wrong Email or Password</Alert> : ""}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

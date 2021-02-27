@@ -12,10 +12,7 @@ export default function userReducer( state = initState , action ) {
     switch(type) {
         case a.ADD_USER:
             return{
-                ...state.users,
-                users: [
-                    ...action.payload
-                ]
+                users: [...state.users, action.payload ]
             }
             default:
                 return state 

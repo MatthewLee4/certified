@@ -1,4 +1,6 @@
-//let Userdb = require('../models/'); //requiring DB
+let Userdb = require('../models/userModel'); //requiring DB
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 exports.findAllUsers = (req, res) => {
     //   Userdb.find()
@@ -19,28 +21,34 @@ exports.createUser = (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-    console.log(name)
+    console.log(req.body)
      
     //CHECK EMAIL FIRST TO SEE IF USER ALREADY EXISTS 
-    // Userdb.find({ email: email }) //is that query?
-    //   .then((user) => {
-    //     if (user == null)
-    //     {           
-    //         const newUser = new Userdb({
-    //             name,
-    //             email,
-    //             password,
-    //         });
+    Userdb.findOne({ email: email }, async(err, user) => {
+        if (err) throw err;
+        if (user == null)
+        {   
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            console.log(hashedPassword)
+            const newUser = new Userdb({
+                name,
+                email,
+                password: hashedPassword,
+            });                      
 
-    //         newUser.save()
-    //             .then(() => res.json('User added!'))
-    //             .catch(err => res.status(400).json('Error: ' + err));
-            res.json({ message: "User created successfully" });
-    //     } else {
-    //         res.json({ message: "Email Already Exists" }); 
-    //     }
-    //   })
-    //   .catch(err => res.status(400).json('Error: ' + err));
+            await newUser.save()
+                .then(() => {
+                    Userdb.find({ email: email })
+                        .then((user)=> {
+                            res.send(user); //array -> data[0]
+                            console.log("User Created")
+                        })  
+                })
+                .catch(err => res.status(400).json('Error: ' + err));                     
+        } else {
+            res.send("Email Already Exists"); 
+        }
+      })
 }
 
 exports.updateUser = (req, res) => {
