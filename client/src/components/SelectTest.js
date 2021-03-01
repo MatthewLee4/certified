@@ -9,22 +9,59 @@ import Typography from '@material-ui/core/Typography';
 import MenuAppBar from './Header'
 import sportsLogo from "../assets/sports.png"
 import politicsLogo from "../assets/politics.png"
-import historyLogo from "../assets/history.jpg"
+import historyLogo from "../assets/history.png"
 import { useHistory } from "react-router-dom"
+import Link from '@material-ui/core/Link';
+
+function Copyright() {
+    return (
+      <>
+      <Typography variant="body2" color="textSecondary" align="center">
+        {'Copyright © '}
+        <Link color="inherit" href="https://material-ui.com/">
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+      </>
+    );
+  }
 
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
+      
     },
-    rootCard: {
+    rootCard: { // category card inner
         width: 300,
         textAlign:'center',
         padding: theme.spacing(2),
-        margin: "auto"
+        margin: "auto",
+        backgroundColor: "#f4d1ae",
+        
+        
     },
-    paper: {        
+    paper: { // Title and caption
         textAlign: 'center',
-    }
+        fontFamily: 'marker felt',
+        fontSize: 35,
+        color: '#12263a',
+        paddingTop: 10,
+       
+        
+    },
+
+form: { // background of inner category tile
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: '#12263a',
+    
+},
+footer: {
+    backgroundColor: 'theme.palette.background.paper',
+    padding: theme.spacing(6),
+  },
+
   }));
 
 const SelectTest = () => {
@@ -58,10 +95,10 @@ const SelectTest = () => {
             <MenuAppBar /> 
 
             <div className={classes.paper}>
-                <h1>Welcolme Friend</h1>
-                <Typography component="h1" variant="h5">
+                <h1>Welcome Friends !</h1>
+                <h4> 
                     Select a Category
-                </Typography>
+                </h4>
             </div>
 
             <Grid
@@ -70,7 +107,7 @@ const SelectTest = () => {
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '80vh' }}>
+                style={{ minHeight: '60vh' }}>
                 <Grid container item xs={12} spacing={5}>
                     <Grid item xs={4}>
                         <form className={classes.form} noValidate>
@@ -131,6 +168,19 @@ const SelectTest = () => {
                     </Grid>
                 </Grid>
             </Grid>             
+
+{/* Footer */}
+<footer className={classes.footer}>
+        {/* <Typography variant="h6" align="center" gutterBottom>
+          Footer
+        </Typography> */}
+        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+         Created with care by the Certified team!
+        </Typography>
+        <Copyright />
+      </footer>
+      {/* End footer */}
+
         </>
     )
 };

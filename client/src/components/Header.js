@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#12263A"
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(1)
   },
   title: {
     [theme.breakpoints.down("xs")]: {
@@ -29,15 +29,28 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "flex-end",
     paddingLeft: "50%",
-    justifyContent: "space-evenly",
+    justifyContent: "evenly",
     flex: 1,
   },
   buttons: {
-    backgroundColor: "#F4D1AE"
+    display: "flex",
+    backgroundColor: "#F4D1AE",
+    justifyContent: "space-evenly",
+    marginLeft: 10,
+    marginRight: 10,
+    fontFamily: 'Bradley Hand',
+    fontSize: 20,
+
   },
   logo: {
-    maxWidth: 40
+    maxWidth: 100,
+    paddingBottom: 5
+  },
+  title: {
+    fontFamily: 'Bradley Hand',
+    fontSize: 35,
   }
+
 }));
 
 const Header = props => {
@@ -94,9 +107,9 @@ const Header = props => {
       <AppBar className={classes.root} position="static">
         <Toolbar>
           <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/select")} />
-          <Typography variant="h6" className={classes.title} onClick={() => handleButtonClick("/select")}>
+          <h1 className={classes.title} onClick={() => handleButtonClick("/select")}>
             Certified
-          </Typography>
+          </h1>
           {isMobile ? (
             <>
               <IconButton
