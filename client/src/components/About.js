@@ -10,6 +10,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import MenuAppBar from './Header'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 function Copyright() {
   return (
@@ -110,10 +113,13 @@ export default function Album() {
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      View
+                    <GitHubIcon />
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                    <LinkedInIcon />
+                    </Button>
+                    <Button size="small" color="primary">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -134,11 +140,14 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <Button size="small" color="primary">
+                    <GitHubIcon />
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                    <LinkedInIcon />
+                    </Button>
+                    <Button size="small" color="primary">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -159,11 +168,14 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <Button size="small" color="primary">
+                    <GitHubIcon />
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                    <LinkedInIcon />
+                    </Button>
+                    <Button size="small" color="primary">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -184,11 +196,14 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <Button size="small" color="primary">
+                    <GitHubIcon />
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                    <LinkedInIcon />
+                    </Button>
+                    <Button size="small" color="primary">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -209,11 +224,14 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <Button size="small" color="primary">
+                    <GitHubIcon />
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                    <LinkedInIcon />
+                    </Button>
+                    <Button size="small" color="primary">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
