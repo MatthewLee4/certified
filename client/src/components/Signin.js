@@ -3,9 +3,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Alert from '@material-ui/lab/Alert'
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
@@ -82,7 +80,7 @@ export default function SignInSide(props) {
       else {
         console.log(response)
         props.setIsLoggedIn(true);
-        history.push("/test")
+        history.push("/select")
       }
     })
     .catch(function (error) {
@@ -97,6 +95,7 @@ export default function SignInSide(props) {
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
           </Avatar>
@@ -130,10 +129,6 @@ export default function SignInSide(props) {
               value={userLogin.password}
               onChange={handleChange}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
@@ -145,14 +140,9 @@ export default function SignInSide(props) {
               Sign In
             </Button>
             { error === true ? <Alert severity="error">Wrong Email or Password</Alert> : ""}
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+            <Grid container justify='center'>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -161,6 +151,7 @@ export default function SignInSide(props) {
             </Box>
           </form>
         </div>
+      </Box>
       </Grid>
     </Grid>
   );

@@ -18,7 +18,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { connect } from "react-redux";
 import { newUser } from "../actions/new_user";
-import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -67,6 +66,7 @@ function Signup(props) {
     password: ""
   }); 
   const [exist, setExist] = useState(false);
+  const [validation, setValidation] = useState(false);
 
   console.log(user);
   console.log(exist);
@@ -94,13 +94,16 @@ function Signup(props) {
     
     axios.post('/auth/signup', payload)
     .then(function (response) {
+      console.log(response)
       if (response.data == "Email Already Exists"){
         setExist(true);
         console.log("Email Already Exists")
+      } else if (response.data == "Invalid Input"){
+        setValidation(true);
       }
       else {
         console.log(response)
-        history.push("/test")
+        history.push("/select")
       }
     })
     .catch(function (error) {
@@ -173,6 +176,7 @@ function Signup(props) {
                   Create Account
                 </Button>
                 { exist === true ? <Alert severity="error">Email Already Exist</Alert> : ""}
+                { validation === true ? <Alert severity="error">Invalid Input </Alert> : ""}
               <Grid container justify='center' className={classes.icons}>
                 <Box m={1} pt={1} >
                   <FontAwesomeIcon icon={faGoogle} size='2x'/>

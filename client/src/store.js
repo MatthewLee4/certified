@@ -1,12 +1,19 @@
 // import { connect } from "react-redux";
-import reducers from "./reducers/rootReducer";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk"
+import appReducer from "./reducers/reducers";
+import { createStore } from "redux";
 
+const initState = {
+    testCategory: '',
+    user: {},
+    score: 0,
+    badges: []
+}
 
-// const initState = {
-//     test: [],
-//     users: []
-// }
+export const store = createStore( appReducer, initState);
 
-export const store = createStore( reducers, applyMiddleware( thunk ));
+store.subscribe(() => {
+    console.log('state has updated');
+    const state = store.getState();
+    console.log(state);
+});
+export default initState;

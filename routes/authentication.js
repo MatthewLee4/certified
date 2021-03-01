@@ -25,4 +25,12 @@ router.post('/signin', (req, res, next) => {
  //Sign Up
 router.post('/signup', controller.createUser)
 
+//Log out
+router.get('/logout', function(req, res) {
+    req.session.destroy(function(err){
+      req.logout();
+    })
+  res.send('Logout');
+})
+
 module.exports = router;

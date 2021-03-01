@@ -7,6 +7,7 @@ import Protected from './components/Protected';
 import AboutUs from "./components/About";
 import ContactUs from "./components/Contact";
 import Profile from "./components/Profile";
+import SelectTest from "./components/SelectTest"
 
 const AppRouter = (props) => {
   
@@ -24,25 +25,22 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
               <Signin setIsLoggedIn={setIsLoggedIn} />
           </Route>
           <Protected isLoggedIn={isLoggedIn}>
+            <Route path="/select" exact>
+                <SelectTest />
+            </Route>
             <Route path="/test" exact>
                 <Test />
             </Route> 
-          </Protected>
-          
-          <Route path="/test" exact>
-              <Test />
-          </Route>
-          <Route path="/profile" exact>
-              <Profile />
-          </Route> 
-          <Route path="/about" exact>
-              <AboutUs />
-          </Route> 
-          <Route path="/contact" exact>
-              <ContactUs />
-          </Route> 
-
-          
+            <Route path="/profile" exact>
+                <Profile />
+            </Route> 
+            <Route path="/about" exact>
+                <AboutUs />
+            </Route> 
+            <Route path="/contact" exact>
+                <ContactUs />
+            </Route> 
+          </Protected>          
         </Switch>
       </BrowserRouter>
     </div>

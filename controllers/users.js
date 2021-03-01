@@ -21,7 +21,7 @@ exports.createUser = (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-    console.log(req.body)
+    console.log("inside create")
      
     //CHECK EMAIL FIRST TO SEE IF USER ALREADY EXISTS 
     Userdb.findOne({ email: email }, async(err, user) => {
@@ -45,8 +45,11 @@ exports.createUser = (req, res) => {
                         })  
                 })
                 .catch(err => res.status(400).json('Error: ' + err));                     
+        } else if (user.name == "" || user.email == "" || user.password == "") {
+            console.log(user)
+            res.send('Invalid Input')
         } else {
-            res.send("Email Already Exists"); 
+            res.send("Email Already Exists")
         }
       })
 }
