@@ -143,7 +143,7 @@ export default function Album() {
                   </CardActions>
                 </Card>
               </Grid> 
-              <Grid item key={2} xs={12} sm={6} md={4}>
+              <Grid item key={3} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardTeamMember}
@@ -168,7 +168,7 @@ export default function Album() {
                   </CardActions>
                 </Card>
               </Grid> 
-              <Grid item key={2} xs={12} sm={6} md={4}>
+              <Grid item key={4} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardTeamMember}
@@ -193,7 +193,7 @@ export default function Album() {
                   </CardActions>
                 </Card>
               </Grid> 
-              <Grid item key={2} xs={12} sm={6} md={4}>
+              <Grid item key={5} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardTeamMember}

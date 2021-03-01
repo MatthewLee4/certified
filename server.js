@@ -22,7 +22,8 @@ app.use(cors({
 app.use(session({
   secret: "secret",
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {maxAge:7200000, sameSite: false}
 }));
 app.use(cookieParser("secret"));
 app.use(flash());

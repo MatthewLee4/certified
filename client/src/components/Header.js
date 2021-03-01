@@ -47,6 +47,7 @@ const Header = props => {
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const axios = require('axios').default;
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -60,6 +61,18 @@ const Header = props => {
   const handleButtonClick = pageURL => {
     history.push(pageURL);
   };
+
+  const handleSubmitClick = (e) => {
+    axios.get('/auth/logout')
+    .then(function (response) {
+      if (response.data == "Logout"){
+        history.push("/signin")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
 
   const menuItems = [
     {
@@ -80,8 +93,8 @@ const Header = props => {
     <div className={classes.root}>
       <AppBar className={classes.root} position="static">
         <Toolbar>
-          <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/test")} />
-          <Typography variant="h6" className={classes.title} onClick={() => handleButtonClick("/test")}>
+          <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/select")} />
+          <Typography variant="h6" className={classes.title} onClick={() => handleButtonClick("/select")}>
             Certified
           </Typography>
           {isMobile ? (
@@ -140,6 +153,9 @@ const Header = props => {
               >
                 ABOUT
               </Button>
+              <Button  className={classes.buttons}
+                variant="contained"
+                onClick={() => handleSubmitClick()}>Logout</Button>
             </div>
           )}
         </Toolbar>
