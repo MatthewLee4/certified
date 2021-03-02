@@ -2,13 +2,6 @@ let Userdb = require('../models/userModel'); //requiring DB
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-exports.findAllUsers = (req, res) => {
-    //   Userdb.find()
-    //     .then(users => res.json(users))
-    //     .catch(err => res.status(400).json('Error: ' + err));
-    res.json({ message: "All users!" });
-}
-
 exports.findUser = (req, res) => {
     // Userdb.findById(req.params.id)
     //   .then(user => res.json(user))
@@ -29,7 +22,6 @@ exports.createUser = (req, res) => {
         if (user == null)
         {   
             const hashedPassword = await bcrypt.hash(password, saltRounds);
-            console.log(hashedPassword)
             const newUser = new Userdb({
                 name,
                 email,
@@ -55,16 +47,16 @@ exports.createUser = (req, res) => {
 }
 
 exports.updateUser = (req, res) => {
-    // Userdb.findById(req.params.id)
-    // .then(user => {
-    //   user.name = req.body.name;
-    //   user.email = req.body.email;
-    //   user.password = req.body.password;
+    Userdb.findById((req.params.id), async (err, user) => {
+        user.name = req.body.name;
+        user.email = req.body.email;
 
-    //   user.save()
-    //     .then(() => res.json('User updated!'))
-    //     .catch(err => res.status(400).json('Error: ' + err));
-    // })
-    // .catch(err => res.status(400).json('Error: ' + err));
-    res.json({message: "User Updated"});
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+        user.password = hashedPassword;
+  
+        user.save()
+          .then(() => res.json('User updated!'))
+          .catch(err => res.status(400).json('Error: ' + err));
+
+    })
 }
