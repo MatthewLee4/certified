@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
       
+      
     },
     rootCard: { // category card inner
         width: 300,
@@ -38,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         margin: "auto",
         backgroundColor: "#f4d1ae",
+        paddingTop: theme.spacing(8),
+        paddingBottom: theme.spacing(8),
         
         
     },
@@ -46,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: 'marker felt',
         fontSize: 35,
         color: '#12263a',
-        paddingTop: 10,
+        padding: 1,
+        // backgroundColor: "#f4edea",
        
         
     },
@@ -61,6 +65,14 @@ footer: {
     backgroundColor: 'theme.palette.background.paper',
     padding: theme.spacing(6),
   },
+  gridcont: { // background tiles sit on
+    display: 'flex',
+    margin: 'auto',
+    backgroundColor: "#f4edea",
+    maxWidth: 1750,
+    
+    
+  }
 
   }));
 
@@ -101,7 +113,7 @@ const SelectTest = () => {
                 </h4>
             </div>
 
-            <Grid
+            <Grid className={classes.gridcont}
                 container
                 spacing={0}
                 direction="column"
