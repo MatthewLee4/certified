@@ -93,8 +93,8 @@ resetForm = () => {
      </div>
 
      <div className= "herocontenttwo"> 
-       <h2> We are here to answer all you questions</h2>
-       <h2> and we will get in touch as soon as possible.</h2>
+       <h2> We are here to answer all you questions.</h2>
+       <h2> Please fill out the form and we will get in touch as soon as possible.</h2>
      </div>
 
 
