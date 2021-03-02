@@ -1,0 +1,15 @@
+.contact-form {
+display: flex;
+justify-content: center;
+flex-direction: column;
+max-width: 75;
+/* background-color: blue; */
+color: 'pink';
+}
+.outer{
+    background-color: black;
+}
+
+.inner{
+    /* background-color: purple; */
+}

@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
+import './Contact.css'; 
+import MenuAppBar from './Header'
+
 
 require('dotenv').config();
 
 export default class Contact extends Component {
+    
   state = {
     name: "",
     message: "",
@@ -72,9 +76,23 @@ resetForm = () => {
   };
 
   render() {
+
+    const mystyle = {
+        color: "white",
+        backgroundColor: "DodgerBlue",
+        padding: "10px",
+        fontFamily: "Arial"
+      };
+
     return (
+<div>
+      <MenuAppBar />
+
+
+
+
         <form className="contact-form" onSubmit={(e) => this.formSubmit(e)}>
-        <TextField
+        <TextField 
           id="standard-multiline-flexible"
           label="Message"
           placeholder="Enter Message"
@@ -136,6 +154,8 @@ resetForm = () => {
           </button>
         </div>
       </form>
+</div>
+    //   </div>
     );
   }
 }
