@@ -10,6 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import MenuAppBar from './Header'
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import Contact from './Contact';
 
 function Copyright() {
   return (
@@ -29,21 +33,29 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
   },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
+  heroContent: { // title and header bkgd
+  
     padding: theme.spacing(8, 0, 6),
+    fontFamily: 'marker felt',
+    fontSize: 35,
+    color: '#12263a',
+    paddingTop: 10,
   },
   heroButtons: {
     marginTop: theme.spacing(4),
+    
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
+    backgroundColor: "#f4edea",
   },
-  card: {
+  card: { // card tiles 
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    backgroundColor: '#f4d1ae',
+    
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
@@ -51,13 +63,24 @@ const useStyles = makeStyles((theme) => ({
   cardTeamMember: {
     paddingTop: '56.25%', // 16:9
   },
-  cardContent: {
+  cardContent: { // text inside of card tiles
     flexGrow: 1,
+    fontFamily: 'lato',
+    fontSize: 12,
+    color: '#12263a'
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  caption: { // title caption
+    fontFamily: 'lato',
+    fontSize: 24,
+  },
+  buttonlinks: {
+    margin: 'auto',
+  }
+
 }));
 
 // const cards = [1, 2, 3, 4, 5];
@@ -72,21 +95,21 @@ export default function Album() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            <h1 align="center" color="#12263a">
               About Us
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            </h1>
+            <div className={classes.caption} align="center" color="#12263a">
             An efficient development team is mostly self-managed and delivers valuable software on time. Hence, the team’s efficiency is the main success. The Certifed team was tailor-built to be the pinnacle of performance. Here's a little bit about us.
-            </Typography>
-            <div className={classes.heroButtons}>
-              {/* <Grid container spacing={1} justify="center">
+            </div>
+            {/* <div className={classes.heroButtons}>
+              <Grid container spacing={1} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
                     Main call to action
                   </Button>
                 </Grid>
-              </Grid> */}
-            </div>
+              </Grid>
+            </div> */}
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
@@ -103,17 +126,20 @@ export default function Album() {
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Oshea Deans
-                    </Typography>
-                    <Typography>
+                      </Typography>
+                      <h2>
                       This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    </h2>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <CardActions className={classes.buttonlinks}>
+                  <Button target="_blank" href="https://github.com/OsheaRD" size="small" color="dark">
+                    <GitHubIcon />
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button target="_blank" href="https://linkedin.com/in/osheadeans/" size="small" color="dark">
+                    <LinkedInIcon />
+                    </Button>
+                    <Button target="_blank" href="https://scrumptioustech.com/" size="small" color="dark">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -129,16 +155,19 @@ export default function Album() {
                     <Typography gutterBottom variant="h5" component="h2">
                       Barbara Pincela
                     </Typography>
-                    <Typography>
+                    <h2>
                       This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    </h2>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <CardActions className={classes.buttonlinks}>
+                  <Button target="_blank" href="https://github.com/bpincelamattos" size="small" color="dark">
+                    <GitHubIcon />
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button target="_blank" href="https://www.linkedin.com/in/bpincela/" size="small" color="dark">
+                    <LinkedInIcon />
+                    </Button>
+                    <Button target="_blank" href="" size="small" color="dark">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -154,16 +183,19 @@ export default function Album() {
                     <Typography gutterBottom variant="h5" component="h2">
                       Joseph Epherson
                     </Typography>
-                    <Typography>
+                    <h2>
                       This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    </h2>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <CardActions className={classes.buttonlinks}>
+                  <Button target="_blank" href="https://github.com/Joe-dev13" size="small" color="dark">
+                    <GitHubIcon />
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button target="_blank" href="https://www.linkedin.com/in/joseph-epherson-84a1571b4/" size="small" color="dark">
+                    <LinkedInIcon />
+                    </Button>
+                    <Button target="_blank" href="" size="small" color="dark">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -179,16 +211,19 @@ export default function Album() {
                     <Typography gutterBottom variant="h5" component="h2">
                       Matthew Lee
                     </Typography>
-                    <Typography>
+                    <h2>
                       This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    </h2>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <CardActions className={classes.buttonlinks}>
+                  <Button target="_blank" href="https://github.com/MatthewLee4" size="small" color="dark">
+                    <GitHubIcon />
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button target="_blank" href="https://www.linkedin.com/in/matthew-lee-174b491b6/" size="small" color="dark">
+                    <LinkedInIcon />
+                    </Button>
+                    <Button target="_blank" href="" size="small" color="dark">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
@@ -204,16 +239,19 @@ export default function Album() {
                     <Typography gutterBottom variant="h5" component="h2">
                       Andre Davis
                     </Typography>
-                    <Typography>
+                    <h2>
                       This is a media card. You can use this section to describe the content.
-                    </Typography>
+                    </h2>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
+                  <CardActions className={classes.buttonlinks}>
+                  <Button target="_blank" href="https://github.com/nastrodamous" size="small" color="dark">
+                    <GitHubIcon />
                     </Button>
-                    <Button size="small" color="primary">
-                      Edit
+                    <Button target="_blank" href="https://www.linkedin.com/in/andrejdavis24/" size="small" color="dark">
+                    <LinkedInIcon />
+                    </Button>
+                    <Button target="_blank" href="" size="small" color="dark">
+                    <MailOutlineIcon />
                     </Button>
                   </CardActions>
                 </Card>
