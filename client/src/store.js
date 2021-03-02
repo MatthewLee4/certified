@@ -1,18 +1,19 @@
 // import { connect } from "react-redux";
-import reducers from "./reducers/rootReducer";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk"
-
+import appReducer from "./reducers/reducers";
+import { createStore } from "redux";
 
 const initState = {
-    test: {},
-    users: {},
+    testCategory: '',
+    user: {},
     score: 0,
-    testAnswer: "",
-    userSubmit: "",
-    timer: 0
+    badges: []
 }
 
-export const store = createStore( reducers, applyMiddleware( thunk ));
+export const store = createStore( appReducer, initState);
 
-//Need to get 7 out of 10 questions, then need to store score in database to display on card
+store.subscribe(() => {
+    console.log('state has updated');
+    const state = store.getState();
+    console.log(state);
+});
+export default initState;

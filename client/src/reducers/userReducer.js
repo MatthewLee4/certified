@@ -8,16 +8,13 @@ const initState = {
 
 export default function userReducer( state = initState , action ) {
     
-    const {type} = action
-    switch(type) {
-        case a.ADD_USER:
-            return{
-                ...state.users,
-                users: [
-                    ...action.payload
-                ]
+     switch(action.type){
+        case a.SET_USER: 
+            return {
+                ...state,
+                user: action.user_loggedIn
             }
-            default:
-                return state 
-    }   
+        default:
+            return state
+    }
 }

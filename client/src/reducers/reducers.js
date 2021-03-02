@@ -1,19 +1,15 @@
+import initState from '../store';
 import { 
-    UPDATE_STORE
- } from "../actions/constants";
- 
- 
-const initState = {
-    test: [],
-    users: []
-}
+    SET_USER
+ } from "../actions/constants"; 
 
-export default function someReducer(state = initState, action)  {
+export default function appReducer(state = initState, action)  {
     switch(action.type){
-        case UPDATE_STORE: 
-            return ({
-                state
-            })
+        case SET_USER: 
+            return {
+                ...state,
+                user: action.user_logged
+            }
         default:
             return state
     }

@@ -10,13 +10,15 @@ import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
+import logo from "../assets/logo.png"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    backgroundColor: "#12263A"
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(1)
   },
   title: {
     [theme.breakpoints.down("xs")]: {
@@ -27,9 +29,28 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     alignItems: "flex-end",
     paddingLeft: "50%",
+    justifyContent: "evenly",
+    flex: 1,
+  },
+  buttons: {
+    display: "flex",
+    backgroundColor: "#F4D1AE",
     justifyContent: "space-evenly",
-    flex: 1
+    marginLeft: 10,
+    marginRight: 10,
+    fontFamily: 'Bradley Hand',
+    fontSize: 20,
+
+  },
+  logo: {
+    maxWidth: 100,
+    paddingBottom: 5
+  },
+  title: {
+    fontFamily: 'Bradley Hand',
+    fontSize: 35,
   }
+
 }));
 
 const Header = props => {
@@ -39,6 +60,7 @@ const Header = props => {
   const open = Boolean(anchorEl);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const axios = require('axios').default;
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -52,6 +74,18 @@ const Header = props => {
   const handleButtonClick = pageURL => {
     history.push(pageURL);
   };
+
+  const handleSubmitClick = (e) => {
+    axios.get('/auth/logout')
+    .then(function (response) {
+      if (response.data == "Logout"){
+        history.push("/signin")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
 
   const menuItems = [
     {
@@ -70,11 +104,12 @@ const Header = props => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar className={classes.root} position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title} onClick={() => handleButtonClick("/test")}>
+          <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/select")} />
+          <h1 className={classes.title} onClick={() => handleButtonClick("/select")}>
             Certified
-          </Typography>
+          </h1>
           {isMobile ? (
             <>
               <IconButton
@@ -113,24 +148,27 @@ const Header = props => {
             </>
           ) : (
             <div className={classes.headerOptions}>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/profile")}
               >
                 PROFILE
               </Button>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/contact")}
               >
-                CONTACT US
+                CONTACT
               </Button>
-              <Button
+              <Button className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/about")}
               >
-                ABOUT US
+                ABOUT
               </Button>
+              <Button  className={classes.buttons}
+                variant="contained"
+                onClick={() => handleSubmitClick()}>Logout</Button>
             </div>
           )}
         </Toolbar>

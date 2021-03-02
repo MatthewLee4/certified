@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import Alert from '@material-ui/lab/Alert'
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,14 +43,57 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+export default function SignInSide(props) {
   const classes = useStyles();
+  const axios = require('axios').default;
+  const history = useHistory();
+
+  const [userLogin, setUserLogin] = useState({
+    email: "",
+    password: ""
+  }); 
+  const [error, setError] = useState(false);
+  
+  console.log(userLogin);
+
+  const handleChange = (e) => {
+    const {id , value} = e.target   
+    setUserLogin(prevState => ({
+        ...prevState,
+        [id] : value
+    }))
+  }
+
+  const handleSubmitClick = (e) => {
+    e.preventDefault();
+    const payload = {
+      "email":userLogin.email,
+      "password":userLogin.password,
+    }
+
+    axios.post('/auth/signin', payload)
+    .then(function (response) {
+      console.log(response)
+      if (response.data == "Wrong Email or Password"){
+        setError(true);
+      }
+      else {
+        console.log(response)
+        props.setIsLoggedIn(true);
+        history.push("/select")
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });    
+  }
 
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
           </Avatar>
@@ -67,6 +110,8 @@ export default function SignInSide() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={userLogin.email}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -79,10 +124,8 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              value={userLogin.password}
+              onChange={handleChange}
             />
             <Button
               type="submit"
@@ -90,17 +133,14 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleSubmitClick}
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+            { error === true ? <Alert severity="error">Wrong Email or Password</Alert> : ""}
+            <Grid container justify='center'>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -109,6 +149,7 @@ export default function SignInSide() {
             </Box>
           </form>
         </div>
+      </Box>
       </Grid>
     </Grid>
   );

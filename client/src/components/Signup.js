@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+import Alert from '@material-ui/lab/Alert'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { connect } from "react-redux";
 import { newUser } from "../actions/new_user";
-import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,14 +58,18 @@ const useStyles = makeStyles((theme) => ({
 function Signup(props) {
   const classes = useStyles();
   const axios = require('axios').default;
+  const history = useHistory();
 
   const [user, setUser] = useState({
     name : "",
     email: "",
     password: ""
   }); 
-  
+  const [exist, setExist] = useState(false);
+  const [validation, setValidation] = useState(false);
+
   console.log(user);
+  console.log(exist);
 
   const helloUser = data => {
     props.newUser( data );
@@ -87,18 +92,18 @@ function Signup(props) {
       "password":user.password,
     }
     
-    axios.post('/users/add', payload)
+    axios.post('/auth/signup', payload)
     .then(function (response) {
-      if(response.status === 200){
-        setUser(prevState => ({
-          ...prevState,
-          'successMessage' : 'Registration successful. Redirecting to home page..'
-        }))
-        //redirectToHome();
-        //props.showError(null)
-      } else{
-        console.log("Something went wrong")
-        //props.showError("Some error ocurred");
+      console.log(response)
+      if (response.data == "Email Already Exists"){
+        setExist(true);
+        console.log("Email Already Exists")
+      } else if (response.data == "Invalid Input"){
+        setValidation(true);
+      }
+      else {
+        console.log(response)
+        history.push("/select")
       }
     })
     .catch(function (error) {
@@ -107,11 +112,6 @@ function Signup(props) {
     
     helloUser( payload );
   }
-
-
-  // axios.get('/users/')
-  //   .then((res) => console.log(res.data));
-      
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -175,6 +175,8 @@ function Signup(props) {
                 >
                   Create Account
                 </Button>
+                { exist === true ? <Alert severity="error">Email Already Exist</Alert> : ""}
+                { validation === true ? <Alert severity="error">Invalid Input </Alert> : ""}
               <Grid container justify='center' className={classes.icons}>
                 <Box m={1} pt={1} >
                   <FontAwesomeIcon icon={faGoogle} size='2x'/>
