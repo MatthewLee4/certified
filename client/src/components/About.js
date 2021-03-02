@@ -13,7 +13,7 @@ import MenuAppBar from './Header'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import Contact from './Contact';
+// import Contact from './Contact';
 
 function Copyright() {
   return (
@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '56.25%', // 16:9
   },
   cardTeamMember: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '65.25%', // 16:9
   },
   cardContent: { // text inside of card tiles
     flexGrow: 1,
