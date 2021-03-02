@@ -2,14 +2,56 @@
 display: flex;
 justify-content: center;
 flex-direction: column;
-max-width: 75;
-/* background-color: blue; */
+padding-top: 5vh;
 color: 'pink';
+padding-left: 25vw;
+padding-right: 25vw;
 }
 .outer{
-    background-color: black;
+    background-color: green;
 }
 
 .inner{
     /* background-color: purple; */
 }
+
+.button--container {
+    display:flex;
+    align-content: space-around;
+    justify-content: center;
+    
+}
+
+.button { 
+    background-color:#F4D1AE;
+    font-family: "lato";
+    font-size: large;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.textfield {
+    
+
+}
+
+.herocontent { 
+    padding-top: 10px;
+    text-align: center;
+    font-family: "marker felt";
+    color: #12263A;
+  }
+
+  .herocontenttwo { 
+    text-align: center;
+    font-family: "lato";
+    color: #12263A;
+  }
+
+  .formbox{ 
+ background-color: #F4EDEA;
+ padding-bottom: 50px;
+
+  }
+
+ 
