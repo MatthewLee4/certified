@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 24,
   },
   buttonlinks: {
-
+    margin: 'auto',
   }
 
 }));
@@ -126,23 +126,23 @@ export default function Album() {
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Oshea Deans
-                    </Typography>
-                    <h2>
+                      </Typography>
+                      <h2>
                       This is a media card. You can use this section to describe the content.
-                    </h2> 
+                    </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
-                    <Button target="_blank" href="https://github.com/OsheaRD" size="small" color="dark" >
+                  <Button target="_blank" href="https://github.com/OsheaRD" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
-                    <Button target="_blank" href="https://www.linkedin.com/in/osheadeans/" size="small" color="dark">
+                    <Button target="_blank" href="https://linkedin.com/in/osheadeans/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark" > 
+                    <Button target="_blank" href="https://scrumptioustech.com/" size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
-                </Card> 
+                </Card>
               </Grid>
               <Grid item key={2} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
@@ -159,7 +159,7 @@ export default function Album() {
                       This is a media card. You can use this section to describe the content.
                     </h2>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.buttonlinks}>
                   <Button target="_blank" href="" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
@@ -187,7 +187,7 @@ export default function Album() {
                       This is a media card. You can use this section to describe the content.
                     </h2>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.buttonlinks}>
                   <Button target="_blank" href="" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
@@ -215,7 +215,7 @@ export default function Album() {
                       This is a media card. You can use this section to describe the content.
                     </h2>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.buttonlinks}>
                   <Button target="_blank" href="" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
@@ -243,7 +243,7 @@ export default function Album() {
                       This is a media card. You can use this section to describe the content.
                     </h2>
                   </CardContent>
-                  <CardActions>
+                  <CardActions className={classes.buttonlinks}>
                   <Button target="_blank" href="" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
