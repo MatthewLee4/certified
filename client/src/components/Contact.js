@@ -77,21 +77,72 @@ resetForm = () => {
 
   render() {
 
-    const mystyle = {
-        color: "white",
-        backgroundColor: "DodgerBlue",
-        padding: "10px",
-        fontFamily: "Arial"
-      };
+    // const mystyle = {
+    //     color: "white",
+    //     backgroundColor: "DodgerBlue",
+    //     padding: "10px",
+    //     fontFamily: "Arial"
+    //   };
 
     return (
-<div>
+<div className= "formbox">
       <MenuAppBar />
 
+     <div className= "herocontent"> 
+       <h1> Need to get in touch?</h1>
+     </div>
+
+     <div className= "herocontenttwo"> 
+       <h2> We are here to answer all you questions</h2>
+       <h2> and we will get in touch as soon as possible.</h2>
+     </div>
 
 
 
         <form className="contact-form" onSubmit={(e) => this.formSubmit(e)}>
+
+        <TextField className= "textfield"
+          id="outlined-basic"
+          placeholder="Enter your name"
+          label="Name"
+          variant="outlined"
+          value={this.state.name}
+          onChange={(e) => this.setState({ name: e.target.value })}
+          required
+          type="text"
+        />
+        <br />
+        <br />
+       
+
+        <TextField
+          id="outlined-basic"
+          label="Email"
+          placeholder="Enter email address"
+          variant="outlined"
+          value={this.state.email}
+          onChange={(e) => this.handleChangeEmail(e)}
+          error={this.state.emailError}
+          required
+          type="email"
+        />
+        <br />
+        <br />
+       
+
+        <TextField
+          id="outlined-basic"
+          placeholder="Enter Subject"
+          label="Subject"
+          variant="outlined"
+          value={this.state.subject}
+          onChange={(e) => this.setState({ subject: e.target.value })}
+          required
+        />
+        <br />
+        <br />
+        
+
         <TextField 
           id="standard-multiline-flexible"
           label="Message"
@@ -107,49 +158,8 @@ resetForm = () => {
         <br />
         <br />
         <br />
-
-        <TextField
-          id="outlined-basic"
-          placeholder="Enter your name"
-          label="Name"
-          variant="outlined"
-          value={this.state.name}
-          onChange={(e) => this.setState({ name: e.target.value })}
-          required
-          type="text"
-        />
-        <br />
-        <br />
-        <br />
-
-        <TextField
-          id="outlined-basic"
-          label="Email"
-          placeholder="Enter email address"
-          variant="outlined"
-          value={this.state.email}
-          onChange={(e) => this.handleChangeEmail(e)}
-          error={this.state.emailError}
-          required
-          type="email"
-        />
-        <br />
-        <br />
-        <br />
-        <TextField
-          id="outlined-basic"
-          placeholder="Enter Subject"
-          label="Subject"
-          variant="outlined"
-          value={this.state.subject}
-          onChange={(e) => this.setState({ subject: e.target.value })}
-          required
-        />
-        <br />
-        <br />
-        <br />
         <div className="button--container">
-          <button type="submit" className="button button-primary">
+          <button type="submit" className="button">
             {this.state.buttonText}
           </button>
         </div>
