@@ -160,10 +160,10 @@ export default function Album() {
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
-                  <Button target="_blank" href="" size="small" color="dark">
+                  <Button target="_blank" href="https://github.com/bpincelamattos" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://www.linkedin.com/in/bpincela/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
                     <Button target="_blank" href="" size="small" color="dark">
@@ -188,10 +188,10 @@ export default function Album() {
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
-                  <Button target="_blank" href="" size="small" color="dark">
+                  <Button target="_blank" href="https://github.com/Joe-dev13" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://www.linkedin.com/in/joseph-epherson-84a1571b4/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
                     <Button target="_blank" href="" size="small" color="dark">
@@ -216,10 +216,10 @@ export default function Album() {
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
-                  <Button target="_blank" href="" size="small" color="dark">
+                  <Button target="_blank" href="https://github.com/MatthewLee4" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://www.linkedin.com/in/matthew-lee-174b491b6/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
                     <Button target="_blank" href="" size="small" color="dark">
@@ -244,10 +244,10 @@ export default function Album() {
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
-                  <Button target="_blank" href="" size="small" color="dark">
+                  <Button target="_blank" href="https://github.com/nastrodamous" size="small" color="dark">
                     <GitHubIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://www.linkedin.com/in/andrejdavis24/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
                     <Button target="_blank" href="" size="small" color="dark">
