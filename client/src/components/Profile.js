@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { makeStyles, withTheme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MenuAppBar from './Header'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import avatar from '../assets/avatar.png'
-import badge from '../assets/badge.jpg'
+// import badge from '../assets/badge.jpg'
+// import firstbadge from '../assets/firstbadge.png'
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import { connect } from "react-redux"
+import ImageList from '@material-ui/core/ImageList';
+import ImageListItem from '@material-ui/core/ImageListItem';
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
+// import ListSubheader from '@material-ui/core/ListSubheader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,8 +33,9 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto"
   },
   rootCard2: {
+    flexDirection: "row",
     width: 800,
-    marginBottom:15
+    marginBottom:15,
     // margin: "auto"
   },
   paper: {
@@ -45,9 +54,39 @@ const useStyles = makeStyles((theme) => ({
   },
   multilineColor:{
     color:'black'
-}
+},
+titles: {
+  fontSize: 50,
+  backgroundColor: "red",
+},
+listimages: {
+  width: 500,
+  height: 450,
+},
+icon: {
+  color: 'rgba(255, 255, 255, 0.54)',
+},
+
  
 }));
+
+const itemData = [
+  {
+    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
+    title: 'Bike',
+    author: '@southside_customs',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    title: 'Burger',
+    author: '@rollelflex_graphy726',
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
+    title: 'Camera',
+    author: '@helloimnik',
+  },
+];
 
 const Profile = ( props ) =>  {
     const classes = useStyles();
@@ -56,32 +95,16 @@ const Profile = ( props ) =>  {
   
     const _toggleIsEditIn = () => setIsEditIn(!isEditIn);
 
-    const handleSubmitClick = (e) => {
-        e.preventDefault();
-        // const payload = {
-        //     "name":user.name,
-        //     "email":userLogin.email,
-        //     "password":userLogin.password,
-        // }
-    
-        // axios.put('/users/update/', payload)
-        // .then(function (response) {
-        //   console.log(response)
-        // })
-        // .catch(function (error) {
-        //   console.log(error);
-        // });    
-      }
-
-
-
+ 
   return (
-    <>
+    <div>
         <MenuAppBar />
         <div className={classes.paper}>
                 <h1>Account</h1>
         </div>
+
         <div className={classes.root}>
+
             <Grid container spacing={3}>
                 <Grid item xs={4}>
                 <Card className={classes.rootCard1}>
@@ -104,6 +127,8 @@ const Profile = ( props ) =>  {
                     </CardContent>
                     </Card>
                 </Grid>
+
+
                 <Grid item xs={8}>
                     <Card className={classes.rootCard2}>
                         <CardContent>
@@ -131,28 +156,42 @@ const Profile = ( props ) =>  {
                             </form>
                         </CardContent>
                     </Card>
-                    <Card className={classes.rootCard2}>
-                        <CardContent>
-                            <Typography variant="h3" component="h2">
-                            Badges
-                            </Typography>
-                            <Grid className={classes.badgePic}>
-                                <CardMedia
-                                component="img"
-                                height="300"
-                                image={badge}
-                                title="Badge Icon"
-                                />
-                            </Grid>
-                        </CardContent>
-                    </Card>               
-                </Grid>
-            </Grid>
-        </div>
-    </>
-  );
-}
-// export default Profile;
+                    </Grid>
+
+                    </Grid>
+
+</div>
+      <ImageList className={classes.listimages}>  
+
+      {itemData.map((item) => (
+        <ImageListItem key={item.img}>
+          <img
+            srcSet={`${item.img}?w=248&fit=crop&auto=format 1x,
+                ${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={item.title}
+          />
+          <ImageListItemBar
+            title={item.title}
+            subtitle={item.author}
+            actionIcon={
+              <IconButton
+                aria-label={`info about ${item.title}`}
+                className={classes.icon}
+              >
+                <InfoIcon />
+              </IconButton>
+            }
+          />
+        </ImageListItem>
+      ))}
+     </ImageList>
+    </div> 
+     )      
+            
+ 
+};  
+               
+
 
 
 const mapStateToProps = ( state, ownProps) => {
