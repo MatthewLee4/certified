@@ -45,24 +45,3 @@ Quiz.prototypes = {
 export default Quiz
 
 
-// {
-//     question: "A stimpmeter measures the speed of a ball over what surface?,
-//     answers: [
-//         {
-//             type: "Golf Putting Green",
-//             content: "true"
-//         },
-//         {
-//             type: "Football Pitch",
-//             content: "false"
-//         },
-//         {
-//             type: "Cricket Outfield",
-//             content: "false"
-//         },
-//         {
-//             type: "Pinball Table",
-//             content: "false"
-//         }
-//     ]
-// },
