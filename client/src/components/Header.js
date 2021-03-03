@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#12263A"
   },
   menuButton: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
+    alignItems: "flex-end"
   },
   title: {
     [theme.breakpoints.down("xs")]: {
@@ -93,12 +94,16 @@ const Header = props => {
       pageURL: "/profile"
     },
     {
+      menuTitle: "About",
+      pageURL: "/about"
+    },
+    {
       menuTitle: "Contact",
       pageURL: "/contact"
     },
     {
-      menuTitle: "About",
-      pageURL: "/about"
+      menuTitle: "Logout",
+      pageURL: "/signin"
     }
   ];
 
@@ -156,19 +161,22 @@ const Header = props => {
               </Button>
               <Button className={classes.buttons}
                 variant="contained"
-                onClick={() => handleButtonClick("/contact")}
-              >
-                CONTACT
-              </Button>
-              <Button className={classes.buttons}
-                variant="contained"
                 onClick={() => handleButtonClick("/about")}
               >
                 ABOUT
               </Button>
+              <Button className={classes.buttons}
+                variant="contained"
+                onClick={() => handleButtonClick("/contact")}
+              >
+                CONTACT
+              </Button>
               <Button  className={classes.buttons}
                 variant="contained"
-                onClick={() => handleSubmitClick()}>Logout</Button>
+                onClick={() => handleSubmitClick()}
+              >
+                LOGOUT
+              </Button>
             </div>
           )}
         </Toolbar>
