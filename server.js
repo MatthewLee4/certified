@@ -20,9 +20,9 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to my mail api");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to my mail api");
+// });
 
 app.post("/api/v1", (req, res) => {
   let data = req.body;
