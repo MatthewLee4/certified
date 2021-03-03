@@ -13,6 +13,7 @@ import avatar from '../assets/avatar.png'
 import badge from '../assets/badge.jpg'
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
+import { connect } from "react-redux"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
  
 }));
 
-const Profile = () =>  {
+const Profile = ( props ) =>  {
     const classes = useStyles();
     const [isEditIn, setIsEditIn] = useState(false);
     const axios = require('axios').default;
@@ -92,10 +93,10 @@ const Profile = () =>  {
                             title="Avatar Icon"
                         />
                         <Typography variant="h3" component="h2" >
-                        User Name
+                        {props.user.user.name}
                         </Typography>
                         <Typography variant="h6" component="h2">
-                        email@email.com
+                        {props.user.user.email}
                         </Typography>
                         <Typography variant="h6" component="p">
                         Test Taken: 
@@ -114,16 +115,16 @@ const Profile = () =>  {
                             </Link>
                             <form className={classes.form} noValidate>
                                 {isEditIn ? <TextField margin="normal" fullWidth id="name" label="Name" name="name"
-                                defaultValue="props.user.name" autoComplete="name" autoFocus /> :<TextField margin="normal" disabled fullWidth id="name" label="Name" name="name"
-                                defaultValue="props.user.name" autoComplete="name" autoFocus />}
+                                defaultValue= {props.user.user.name} autoComplete="name" autoFocus /> :<TextField margin="normal" disabled fullWidth id="name" label="Name" name="name"
+                                defaultValue= {props.user.user.name} autoComplete="name" autoFocus />}
 
                                { isEditIn ? <TextField margin="normal" fullWidth id="email" label="Email" name="email"
-                                value="props.user.email" autoComplete="email" autoFocus/> : <TextField margin="normal" disabled fullWidth id="email" label="Email" name="email"
-                                value="props.user.email" autoComplete="email" autoFocus/>}
+                                value= {props.user.user.email} autoComplete="email" autoFocus/> : <TextField margin="normal" disabled fullWidth id="email" label="Email" name="email"
+                                value= {props.user.user.email} autoComplete="email" autoFocus/>}
 
-                                {isEditIn ? <TextField margin="normal" fullWidth id="password" label="Password" name="password"
+                                {/* {isEditIn ? <TextField margin="normal" fullWidth id="password" label="Password" name="password"
                                 value="props.user.password" autoComplete="password" autoFocus /> : <TextField margin="normal" disabled fullWidth id="password" label="Password" name="password"
-                                value="props.user.password" autoComplete="password" autoFocus />}
+                                value="props.user.password" autoComplete="password" autoFocus />} */}
 
                                 {isEditIn ? <Button type="submit" className={classes.submit}
                                  variant="contained" color="secondary">Save</Button> : ""}
@@ -151,6 +152,21 @@ const Profile = () =>  {
     </>
   );
 }
-export default Profile;
+// export default Profile;
 
 
+const mapStateToProps = ( state, ownProps) => {
+    return {
+      user: state.user
+    }
+}
+
+// const mapDispatchToProps = ( dispatch ) => {
+//   return{
+//     newUser: ( payload ) => {
+//       dispatch(newUser( payload ))
+//     }
+//   }
+// };
+
+export default connect( mapStateToProps, null )( Profile );

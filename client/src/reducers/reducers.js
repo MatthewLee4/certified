@@ -11,6 +11,6 @@ export default function appReducer(state = initState, action)  {
                 user: action.user_logged
             }
         default:
-            return state
+            return { ...state }
     }
 }

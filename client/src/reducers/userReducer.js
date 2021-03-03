@@ -3,18 +3,18 @@ import { a } from "../actions/constants";
 
 const initState = {
     test: [],
-    users: []
+    user: {}
 }
 
 export default function userReducer( state = initState , action ) {
     
-     switch(action.type){
-        case a.SET_USER: 
+    switch(action.type){
+        case a.ADD_USER: 
             return {
                 ...state,
-                user: action.user_loggedIn
+                user: action.payload
             }
         default:
-            return state
+            return { ...state }
     }
 }

@@ -11,6 +11,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
+import{ connect } from "react-redux";
+import { newUser } from "../actions/new_user";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,10 +46,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide(props) {
+function SignInSide(props) {
   const classes = useStyles();
   const axios = require('axios').default;
   const history = useHistory();
+
+  const userData = data => {
+    props.newUser( data );
+    // console.log(data);
+    // console.log("Dispatched to the store")
+  }
 
   const [userLogin, setUserLogin] = useState({
     email: "",
@@ -78,7 +87,8 @@ export default function SignInSide(props) {
         setError(true);
       }
       else {
-        console.log(response)
+        userData(response.data[0])
+        // console.log(response.data[0])
         props.setIsLoggedIn(true);
         history.push("/select")
       }
@@ -112,7 +122,7 @@ export default function SignInSide(props) {
               autoComplete="email"
               value={userLogin.email}
               onChange={handleChange}
-              autoFocus
+              
             />
             <TextField
               variant="outlined"
@@ -154,3 +164,22 @@ export default function SignInSide(props) {
     </Grid>
   );
 }
+
+
+// allows us to use pieces of our state as props in our component 
+const mapStateToProps = ( state , ownProps) => {
+  return{
+    users: state.users
+  }
+};
+
+// biends the dispatch of the store to our actions, that can be passed into our component as props
+const mapDispatchToProps = ( dispatch ) => {
+  return{
+    newUser: ( payload ) => {
+      dispatch(newUser( payload ))
+    }
+  }
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( SignInSide );

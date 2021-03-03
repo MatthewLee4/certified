@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import { newUser } from "../actions/new_user";
 import { useHistory } from "react-router-dom";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
@@ -103,6 +104,7 @@ function Signup(props) {
       }
       else {
         console.log(response)
+        helloUser( response );
         history.push("/select")
       }
     })

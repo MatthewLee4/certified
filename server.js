@@ -5,6 +5,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 var passport = require('passport');
 const mongoose = require('mongoose');
+const nodemailer = require("nodemailer");
 
 require('dotenv').config();
 
@@ -18,6 +19,50 @@ app.use(cors({
   origin: "http://localhost:3000",
   credentials: true
 }));
+
+// app.get("/", (req, res) => {
+//   res.send("Welcome to my mail api");
+// });
+
+app.post("/api/v1", (req, res) => {
+  let data = req.body;
+
+let smtpTransport = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+smtpTransport.verify(function(error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
+
+let mailOptions = {
+  from: data.email,
+  to: "odeans247@gmail.com",
+  subject: `${data.subject}`,
+    html: `<p>${data.name}</p>
+          <p>${data.email}</p>
+          <p>${data.message}</p>`,
+  };
+
+  smtpTransport.sendMail(mailOptions, (error, response) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send("Success");
+    }
+    smtpTransport.close();
+  });
+});
+
+// ALL THE CODE FOR FOR EMAILER ABOVE 
 
 app.use(session({
   secret: "secret",
@@ -58,5 +103,4 @@ app.get('*', (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+    console.log(`Server is running on port: ${port}`)});
