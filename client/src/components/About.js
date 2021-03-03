@@ -13,7 +13,10 @@ import MenuAppBar from './Header'
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import { withRouter } from "react-router-dom";
+import shadows from '@material-ui/core/styles/shadows';
 // import Contact from './Contact';
+
 
 function Copyright() {
   return (
@@ -85,9 +88,12 @@ const useStyles = makeStyles((theme) => ({
 
 // const cards = [1, 2, 3, 4, 5];
 
-export default function Album() {
+function Album(props) {
   const classes = useStyles();
-
+  const { history } = props;
+  const handleButtonClick = pageURL => {
+    history.push(pageURL);
+  };
   return (
     <>
     <MenuAppBar />
@@ -128,7 +134,7 @@ export default function Album() {
                       Oshea Deans
                       </Typography>
                       <h2>
-                      This is a media card. You can use this section to describe the content.
+                      I identify fresh solutions for teams with unique style. Maintaining positive culture and working toward the growth of each individual team member has helped me make my mark professionally.
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
@@ -156,7 +162,7 @@ export default function Album() {
                       Barbara Pincela
                     </Typography>
                     <h2>
-                      This is a media card. You can use this section to describe the content.
+                    Brazilian Software Engineer that loves to make people's life easier with technology!
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
@@ -166,7 +172,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/bpincela/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
+                    <Button target="_blank" onClick={() => handleButtonClick("/contact")} size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -184,7 +190,7 @@ export default function Album() {
                       Joseph Epherson
                     </Typography>
                     <h2>
-                      This is a media card. You can use this section to describe the content.
+                    “Life is like coding a new project without comments. There are bugs that you keep trying to remove while not even knowing what are you making up”. - Namrata Modha
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
@@ -194,7 +200,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/joseph-epherson-84a1571b4/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
+                    <Button target="_blank" onClick={() => handleButtonClick("/contact")} size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -211,9 +217,7 @@ export default function Album() {
                     <Typography gutterBottom variant="h5" component="h2">
                       Matthew Lee
                     </Typography>
-                    <h2>
-                      This is a media card. You can use this section to describe the content.
-                    </h2>
+                    <h2>¯\_(ツ)_/¯</h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
                   <Button target="_blank" href="https://github.com/MatthewLee4" size="small" color="dark">
@@ -222,7 +226,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/matthew-lee-174b491b6/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
+                    <Button target="_blank" onClick={() => handleButtonClick("/contact")} size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -240,7 +244,7 @@ export default function Album() {
                       Andre Davis
                     </Typography>
                     <h2>
-                      This is a media card. You can use this section to describe the content.
+                      "Life isn’t about finding yourself. Life is about creating yourself." - George Bernard Shaw
                     </h2>
                   </CardContent>
                   <CardActions className={classes.buttonlinks}>
@@ -250,7 +254,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/andrejdavis24/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
+                    <Button target="_blank" onClick={() => handleButtonClick("/contact")} size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -277,3 +281,4 @@ export default function Album() {
   );
 }
 
+export default withRouter(Album);
