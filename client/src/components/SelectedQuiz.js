@@ -1,8 +1,9 @@
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
+import Quiz from './Quiz'
 
-const [newAnswers,setNewAnswers] = useState([]);
+//const [newAnswers,setNewAnswers] = useState([]);
 let quizQuestions = []
 
 function SelectedQuiz(props) {

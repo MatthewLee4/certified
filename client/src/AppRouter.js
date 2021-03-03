@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
-import Test from "./components/Test";
 import Protected from './components/Protected';
 import AboutUs from "./components/About";
 import ContactUs from "./components/Contact";
 import Profile from "./components/Profile";
 import SelectTest from "./components/SelectTest"
+import SelectedQuiz from "./components/SelectedQuiz"
 
 const AppRouter = (props) => {
   
@@ -29,7 +29,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false);
                 <SelectTest />
             </Route>
             <Route path="/test" exact>
-                <Test />
+                <SelectedQuiz />
             </Route> 
             <Route path="/profile" exact>
                 <Profile />
