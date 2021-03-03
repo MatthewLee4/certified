@@ -6,14 +6,14 @@ const initState = {
     testCategory: '',
     user: {},
     score: 0,
-    badges: [],
-    counter: 0,
-    questionId: 1,
-    question: '',
-    answerOptions: [],
-    answer: '',
-    answersCount: {},
-    result: ''
+    // badges: [],
+    // counter: 0,
+    // questionId: 1,
+    // question: '',
+    // answerOptions: [],
+    // answer: '',
+    // answersCount: {},
+    // result: ''
 }
 
 export const store = createStore( rootReducer , initState);

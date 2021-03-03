@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
 const [newAnswers,setNewAnswers] = useState([]);
 let quizQuestions = []
 
-function SelectedQuiz() {
+function SelectedQuiz(props) {
     
     return (
         <div>
@@ -21,8 +22,7 @@ function SelectedQuiz() {
 }
 
 
-
-axios.get('https://opentdb.com/api.php?amount=10&category=21&difficulty=medium&type=multiple') 
+axios.get(`https://opentdb.com/api.php?amount=10&category=${props.test.testCategory}&difficulty=medium&type=multiple`) 
     .then(
         async (response) => {
             mapAnswers(JSON.parse(JSON.stringify(response.data.results)))
@@ -62,5 +62,20 @@ shuffleArray = (array) => {
     return array;
   };
 
-export default SelectedQuiz
+
+const mapStateToProps = (state,ownProps) => {
+    return {
+        test: state.testCategory
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updatedScore: payload => {
+            dispatch(updatedScore(payload))
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(SelectedQuiz)
+//export default SelectedQuiz
 
