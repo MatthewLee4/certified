@@ -166,7 +166,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/bpincela/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -194,7 +194,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/joseph-epherson-84a1571b4/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -222,7 +222,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/matthew-lee-174b491b6/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
@@ -250,7 +250,7 @@ export default function Album() {
                     <Button target="_blank" href="https://www.linkedin.com/in/andrejdavis24/" size="small" color="dark">
                     <LinkedInIcon />
                     </Button>
-                    <Button target="_blank" href="" size="small" color="dark">
+                    <Button target="_blank" href="https://capstone-certified.herokuapp.com/contact" size="small" color="dark">
                     <MailOutlineIcon />
                     </Button>
                   </CardActions>
