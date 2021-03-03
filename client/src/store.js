@@ -5,13 +5,15 @@ import { createStore } from "redux";
 const initState = {
     testCategory: '',
     user: {},
-        // {
-        //     name: "Joe",
-        //     email: "test@tester.com",
-        //     password: "123test"
-        // },
     score: 0,
-    badges: []
+    badges: [],
+    counter: 0,
+    questionId: 1,
+    question: '',
+    answerOptions: [],
+    answer: '',
+    answersCount: {},
+    result: ''
 }
 
 export const store = createStore( rootReducer , initState);
