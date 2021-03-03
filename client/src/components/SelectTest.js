@@ -12,6 +12,8 @@ import politicsLogo from "../assets/politics.png"
 import historyLogo from "../assets/history.png"
 import { useHistory } from "react-router-dom"
 import Link from '@material-ui/core/Link';
+import { connect } from "react-redux"
+import { userTest } from "../actions/user-test"
 
 function Copyright() {
     return (
@@ -76,27 +78,35 @@ footer: {
 
   }));
 
-const SelectTest = () => {
+const SelectTest = (props) => {
     const classes = useStyles();
     const [category, setCategory] = useState();
     const history = useHistory();
 
+    const test = (data) => {
+        props.userTest(data);
+        console.log(data)
+    }
+
     const handleSubmitClickSport = (e) => {
         e.preventDefault();
-        setCategory("21")      
+        test("21");
+        // setCategory("21")      
         history.push("/Test")
 
         
     }   
     const handleSubmitClickPolitics = (e) => {
         e.preventDefault();
-        setCategory("24")
+        // setCategory("24")
+        test("24");
         history.push("/Test")
         
     }   
     const handleSubmitClickHistory = (e) => {
         e.preventDefault();
-        setCategory("23")
+        // setCategory("23")
+        test("23");
         history.push("/Test")
         
     }  
@@ -107,7 +117,7 @@ const SelectTest = () => {
             <MenuAppBar /> 
 
             <div className={classes.paper}>
-                <h1>Welcome Friends !</h1>
+                <h1>Welcome {props.user.user.name} !</h1>
                 <h4> 
                     Select a Category
                 </h4>
@@ -197,4 +207,25 @@ const SelectTest = () => {
     )
 };
 
-export default SelectTest;
+// allows us to use pieces of our state as props in our component 
+const mapStateToProps = ( state , ownProps) => {
+    return{
+        user: state.user
+    }
+};
+
+const mapDispatchToProps = ( dispatch ) => {
+    
+    return{
+        userTest : ( payload ) => {
+            dispatch( userTest( payload ) )
+        }
+    }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( SelectTest );
+
+
+
+
+// export default SelectTest;

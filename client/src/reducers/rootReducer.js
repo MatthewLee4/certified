@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import userReducer from "./userReducer";
-import someReducer from "./reducers";
+import user_test_reducer from "./user_test_reducer";
 
 // Consolidate our reducers into a combinedReducer
 export default combineReducers({
-    users: userReducer,
-    test: someReducer
+    user: userReducer,
+    test: user_test_reducer
 })
