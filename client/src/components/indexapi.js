@@ -1,126 +1,91 @@
 const qBank = [
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "How many soccer players should be on the field at the same time?",
+      answers: ["11", "18", "22", "26"],
+      correct: "11",
       questionId: "099099"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "Which team was the 2014-2015 NBA Champions?",
+      answers: ["Houston Rockets", "Atlanta Hawks", "Golden State Warriors", "Cleveland Cavaliers"],
+      correct: "Golden State Warriors",
       questionId: "093909"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "What national team won the 2016 edition of UEFA European Championship?",
+      answers: ["Portugal", "France", "Germany", "England"],
+      correct: "Portugal",
       questionId: "009039"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "How many premier league trophies did Sir Alex Ferguson win during his time at Manchester United?",
+      answers: ["13", "7", "15", "18"],
+      correct: "13",
       questionId: "090089"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "01010101"
-    },
-    {
-      question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "092299"
-    },
-    {
-      question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "How many soccer players should be on the field at the same time?",
+      answers: ["11", "18", "22", "26"],
+      correct: "11",
       questionId: "099099"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "222099"
+      "Which team was the 2014-2015 NBA Champions?",
+      answers: ["Houston Rockets", "Atlanta Hawks", "Golden State Warriors", "Cleveland Cavaliers"],
+      correct: "Golden State Warriors",
+      questionId: "093909"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "2222099"
+      "What national team won the 2016 edition of UEFA European Championship?",
+      answers: ["Portugal", "France", "Germany", "England"],
+      correct: "Portugal",
+      questionId: "009039"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "09922099"
+      "How many premier league trophies did Sir Alex Ferguson win during his time at Manchester United?",
+      answers: ["13", "7", "15", "18"],
+      correct: "13",
+      questionId: "090089"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "222292099"
-    },
-    {
-      question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "0998999099"
-    },
-    {
-      question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
+      "How many soccer players should be on the field at the same time?",
+      answers: ["11", "18", "22", "26"],
+      correct: "11",
       questionId: "099099"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "099099"
+      "Which team was the 2014-2015 NBA Champions?",
+      answers: ["Houston Rockets", "Atlanta Hawks", "Golden State Warriors", "Cleveland Cavaliers"],
+      correct: "Golden State Warriors",
+      questionId: "093909"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "099099"
+      "What national team won the 2016 edition of UEFA European Championship?",
+      answers: ["Portugal", "France", "Germany", "England"],
+      correct: "Portugal",
+      questionId: "009039"
     },
     {
       question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "09459099"
-    },
-    {
-      question:
-        "how build the app ?",
-      answers: ["vinayak", "sarthak", "somil", "devesh"],
-      correct: "vinayak",
-      questionId: "0912219099"
+      "How many premier league trophies did Sir Alex Ferguson win during his time at Manchester United?",
+      answers: ["13", "7", "15", "18"],
+      correct: "13",
+      questionId: "090089"
     },
   
   
   ];
   
-  export default (n = 5) =>
+  export default (n = 8) =>
   Promise.resolve(qBank.sort(() => 0.5 - Math.random()).slice(0, n));

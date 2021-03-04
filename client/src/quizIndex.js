@@ -50,7 +50,7 @@ class Quiz extends Component {
       return(
         <div className="container">
           <div className="title">
-             QuizOn
+             Let's Get Certified ! ! !
           </div>
 
           { this.state.questionBank.length > 0 &&

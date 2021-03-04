@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
 * {
-  font-family: "Raleway", sans-serif;
+  font-family: "lato", sans-serif;
 }
 
 .container {
@@ -20,8 +20,8 @@
 
 .title {
   position: relative;
-  background-color: rgba(0, 0, 0, 1);
-  color: rgb(255, 255, 255);
+  background-color:#06bcc1;
+  color: #12263a;
   padding: 20px;
   text-align: center;
   font-family: monospace;
@@ -30,9 +30,9 @@
 }
 
 .question {
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-weight: bold;
-  font-family: cursive;
+  font-family: lato;
   margin-bottom: 5px;
 }
 
@@ -48,13 +48,13 @@
 .answerBtn {
   position: relative;
   padding: 10px;
-  background-color: rgba(0, 151, 37,0.6);
+  background-color: #12263a;
   display: inline-block;
   margin: 10px;
   outline: none;
   border: none;
-  font-size: 1em;
-  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+  color: #f4d1ae;
   font-weight: bold;
   border-radius: 4px;
   cursor: pointer;
