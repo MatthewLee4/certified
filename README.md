@@ -3,7 +3,7 @@
 
 ## About the App
 
-This app was initially created to solve the problem of not being able to acknowledging "every-day" accomplishments. Whether it's: acknowledging a certain book you've read, acknowledging the fact that you know how to fix a busted pipe, or simply acknowledging your love of all things sports-related; Certified helps you exhibit your skills. By taking a series of short tests, you'll receive a badge that you can place on things like: your resume, your Facebook profile page, your Tinder account, etc. Not only can you inform people about your skills, you can have proof that you're able to do it! 
+This app was initially created to solve the problem of not being able to "Certify" everyday accomplishments. Whether it's acknowledging a certain book you've read,  the fact that you know how to fix a busted pipe (plubing knowledge) or simply acknowledging your love of all things sports-related; Certified helps you exhibit your skills. here, by taking a series of short tests, you'll receive a badge that you can place on things like: your resume,  Facebook profile page or Tinder account (wink wink). Not only can you inform people about your skills, you can have proof that you're able to do it! 
 
 
 ## How to Use
