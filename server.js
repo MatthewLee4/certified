@@ -85,6 +85,8 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
+mongoose.connection.on('error',function(err){   
+  console.log(err)})
 
 const usersRouter = require('./routes/users');
 const testsRouter = require('./routes/tests');

@@ -80,37 +80,31 @@ footer: {
 
 const SelectTest = (props) => {
     const classes = useStyles();
-    const [category, setCategory] = useState();
     const history = useHistory();
 
     const test = (data) => {
         props.userTest(data);
-        console.log(data)
     }
 
     const handleSubmitClickSport = (e) => {
         e.preventDefault();
-        test("21");
-        // setCategory("21")      
+        test("21");    
         history.push("/Test")
 
         
     }   
     const handleSubmitClickPolitics = (e) => {
         e.preventDefault();
-        // setCategory("24")
         test("24");
         history.push("/Test")
         
     }   
     const handleSubmitClickHistory = (e) => {
         e.preventDefault();
-        // setCategory("23")
         test("23");
         history.push("/Test")
         
-    }  
-    console.log(category);
+    }
 
     return (
         <>
@@ -142,7 +136,7 @@ const SelectTest = (props) => {
                                         title="Sports Icon"
                                     />
                                     <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
+                                        <Typography x variant="h5" component="h2">
                                             Sports
                                         </Typography>
                                     </CardContent>

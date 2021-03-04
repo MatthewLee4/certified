@@ -5,11 +5,6 @@ import { createStore } from "redux";
 const initState = {
     testCategory: '',
     user: {},
-        // {
-        //     name: "Joe",
-        //     email: "test@tester.com",
-        //     password: "123test"
-        // },
     score: 0,
     badges: []
 }

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, withTheme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MenuAppBar from './Header'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -14,6 +12,8 @@ import badge from '../assets/badge.jpg'
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import { connect } from "react-redux"
+import { newUser } from "../actions/new_user";
+import Alert from '@material-ui/lab/Alert'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
   rootCard2: {
     width: 800,
     marginBottom:15
-    // margin: "auto"
   },
   paper: {
     padding: theme.spacing(2),
@@ -52,28 +51,50 @@ const useStyles = makeStyles((theme) => ({
 const Profile = ( props ) =>  {
     const classes = useStyles();
     const [isEditIn, setIsEditIn] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
     const axios = require('axios').default;
   
+
+    const userData = data => {
+      props.newUser( data );
+    }
+      
     const _toggleIsEditIn = () => setIsEditIn(!isEditIn);
+
+    const [updatedUser, setUpdatedUser] = useState({
+      _id:props.user.user._id,
+      name : "",
+      email: "",
+      password: ""
+    }); 
+
+    const handleChange = (e) => {
+      const {id , value} = e.target   
+      setUpdatedUser(prevState => ({
+          ...prevState,
+          [id] : value
+      }))
+    }
+
+    console.log(updatedUser);
 
     const handleSubmitClick = (e) => {
         e.preventDefault();
-        // const payload = {
-        //     "name":user.name,
-        //     "email":userLogin.email,
-        //     "password":userLogin.password,
-        // }
-    
-        // axios.put('/users/update/', payload)
-        // .then(function (response) {
-        //   console.log(response)
-        // })
-        // .catch(function (error) {
-        //   console.log(error);
-        // });    
+
+        const payload = {
+            "name":updatedUser.name,
+            "email":updatedUser.email,
+            "password":updatedUser.password,
+        }
+        userData(updatedUser)
+        axios.put(`/users/update/${props.user.user._id}`, payload)
+        .then(function (response) {
+          console.log(response)
+        if (response.status == 200){
+          setIsSaved(true); 
+        }
+      })
       }
-
-
 
   return (
     <>
@@ -114,21 +135,24 @@ const Profile = ( props ) =>  {
                                 Edit
                             </Link>
                             <form className={classes.form} noValidate>
-                                {isEditIn ? <TextField margin="normal" fullWidth id="name" label="Name" name="name"
-                                defaultValue= {props.user.user.name} autoComplete="name" autoFocus /> :<TextField margin="normal" disabled fullWidth id="name" label="Name" name="name"
-                                defaultValue= {props.user.user.name} autoComplete="name" autoFocus />}
+                                {isEditIn ? <TextField margin="normal" fullWidth id="name" label="Name" name="name" required
+                                defaultValue= {props.user.user.name} autoComplete="name" autoFocus onChange={handleChange}/> :<TextField margin="normal" disabled fullWidth id="name" label="Name" name="name"
+                                defaultValue= {props.user.user.name} autoComplete="name" required autoFocus />}
 
-                               { isEditIn ? <TextField margin="normal" fullWidth id="email" label="Email" name="email"
-                                value= {props.user.user.email} autoComplete="email" autoFocus/> : <TextField margin="normal" disabled fullWidth id="email" label="Email" name="email"
-                                value= {props.user.user.email} autoComplete="email" autoFocus/>}
+                                {isEditIn ? <TextField margin="normal" required fullWidth id="email" label="Email" name="email"
+                                defaultValue= {props.user.user.email} autoComplete="email" autoFocus onChange={handleChange}/> :<TextField margin="normal" disabled fullWidth id="email" label="Email" name="email"
+                                defaultValue= {props.user.user.email} required autoComplete="email" autoFocus />}
 
-                                {/* {isEditIn ? <TextField margin="normal" fullWidth id="password" label="Password" name="password"
-                                value="props.user.password" autoComplete="password" autoFocus /> : <TextField margin="normal" disabled fullWidth id="password" label="Password" name="password"
-                                value="props.user.password" autoComplete="password" autoFocus />} */}
+                                {isEditIn ? <TextField required margin="normal" fullWidth id="password" label="Password" name="password" type="password"
+                                autoComplete="password" onChange={handleChange} autoFocus /> : <TextField margin="normal" disabled fullWidth id="password" label="Password" 
+                                name="password" type="password" required  autoComplete="password" autoFocus />}
 
-                                {isEditIn ? <Button type="submit" className={classes.submit}
+                                {isEditIn ? <Button type="submit" className={classes.submit}  onClick={handleSubmitClick}
                                  variant="contained" color="secondary">Save</Button> : ""}
+
                             </form>
+                            {isEditIn ?  isSaved ? <Alert severity="error">User Updated</Alert> : "" : ""}
+                             
                         </CardContent>
                     </Card>
                     <Card className={classes.rootCard2}>
@@ -161,12 +185,12 @@ const mapStateToProps = ( state, ownProps) => {
     }
 }
 
-// const mapDispatchToProps = ( dispatch ) => {
-//   return{
-//     newUser: ( payload ) => {
-//       dispatch(newUser( payload ))
-//     }
-//   }
-// };
+const mapDispatchToProps = ( dispatch ) => {
+  return{
+    newUser: ( payload ) => {
+      dispatch(newUser( payload ))
+    }
+  }
+};
 
-export default connect( mapStateToProps, null )( Profile );
+export default connect( mapStateToProps, mapDispatchToProps )( Profile );
