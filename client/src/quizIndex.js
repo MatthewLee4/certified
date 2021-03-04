@@ -66,7 +66,7 @@ class Quiz extends Component {
           });
         }
         this.setState({
-          responses: this.state.responses < 10 ? this.state.responses+1 : 10
+          responses: this.state.responses < 5 ? this.state.responses+1 : 5
         });
       };
 
@@ -115,7 +115,7 @@ class Quiz extends Component {
                                                                                            selected={answer => this.computeAnswer(answer,correct) }/>)
           }
 
-          {this.state.responses === 10 ? (<Result  score={this.state.score}
+          {this.state.responses === 5 ? (<Result  score={this.state.score}
                                                                       playAgain={this.playAgain}
                                                                       />) :null}
 
