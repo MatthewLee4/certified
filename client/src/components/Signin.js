@@ -53,8 +53,6 @@ function SignInSide(props) {
 
   const userData = data => {
     props.newUser( data );
-    // console.log(data);
-    // console.log("Dispatched to the store")
   }
 
   const [userLogin, setUserLogin] = useState({
@@ -88,7 +86,6 @@ function SignInSide(props) {
       }
       else {
         userData(response.data[0])
-        // console.log(response.data[0])
         props.setIsLoggedIn(true);
         history.push("/select")
       }

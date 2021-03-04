@@ -8,16 +8,8 @@ import Box from '@material-ui/core/Box';
 import Alert from '@material-ui/lab/Alert'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faGoogle,
-    faFacebook,
-    faTwitter
-  } from '@fortawesome/free-brands-svg-icons';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { connect } from "react-redux";
-import { newUser } from "../actions/new_user";
 import { useHistory } from "react-router-dom";
 
 
@@ -56,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Signup(props) {
+export default function Signup(props) {
   const classes = useStyles();
   const axios = require('axios').default;
   const history = useHistory();
@@ -71,11 +63,6 @@ function Signup(props) {
 
   console.log(user);
   console.log(exist);
-
-  const helloUser = data => {
-    props.newUser( data );
-    console.log("Dispatched to the store")
-  }
 
   const handleChange = (e) => {
     const {id , value} = e.target   
@@ -103,8 +90,6 @@ function Signup(props) {
         setValidation(true);
       }
       else {
-        console.log(response)
-        helloUser( response );
         history.push("/select")
       }
     })
@@ -112,7 +97,6 @@ function Signup(props) {
       console.log(error);
     });    
     
-    helloUser( payload );
   }
 
   return (
@@ -179,13 +163,6 @@ function Signup(props) {
                 </Button>
                 { exist === true ? <Alert severity="error">Email Already Exist</Alert> : ""}
                 { validation === true ? <Alert severity="error">Invalid Input </Alert> : ""}
-              <Grid container justify='center' className={classes.icons}>
-                <Box m={1} pt={1} >
-                  <FontAwesomeIcon icon={faGoogle} size='2x'/>
-                  <FontAwesomeIcon icon={faFacebook} size='2x'/>
-                  <FontAwesomeIcon icon={faTwitter} size='2x'/>
-                </Box>
-              </Grid>
               <Grid container justify='center'>
                 <Grid item>
                   <Link href="/signin" variant="body1">
@@ -200,24 +177,3 @@ function Signup(props) {
     </Grid>
   )
 }
-
-
-
-// allows us to use pieces of our state as props in our component 
-const mapStateToProps = ( state , ownProps) => {
-  return{
-    users: state.users
-  }
-};
-
-// biends the dispatch of the store to our actions, that can be passed into our component as props
-const mapDispatchToProps = ( dispatch ) => {
-  return{
-    newUser: ( payload ) => {
-      dispatch(newUser( payload ))
-    }
-  }
-};
-
-export default connect( mapStateToProps, mapDispatchToProps )( Signup );
-// export default Signup
