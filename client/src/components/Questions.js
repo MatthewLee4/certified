@@ -1,13 +1,16 @@
-import React, {useState} from "react"; 
+import React, {Fragment, useState} from "react"; 
 import "../style.css"; 
 
 // Function to question inside our app 
 const QuestionBox = ({ question, options, selected}) => { 
-const [answer, setAnswer] = useState(options); 
-return ( 
+const [answer, setAnswer] = useState(options);
+ 
+return (
+	<>
+	{question?
 	<div className="questionBox"> 
 		<div className="question">{question}</div> 
-		{answer.map((text, index) => ( 
+		{answer?answer.map((text, index) => ( 
 		<button 
 			key={index} 
 			className="answerBtn"
@@ -16,9 +19,11 @@ return (
 					selected(text); 
 				}}> {text} 
 		</button> 
-		))} 
+		)):null} 
 	</div> 
-) 
+	:null
+	}
+ </>)
 }; 
 
 export default QuestionBox; 

@@ -3,7 +3,7 @@ import "../style.css";
 
 const Result = ({score, playAgain}) => ( 
 <div className="score-board"> 
-	<div className="score"> Your score is {score} / 5 correct answer ! ! ! </div> 
+	<div className="score"> Your score is {score} / 5 correct answer ! ! ! LETS GET CERTIFIED ! !  </div> 
 	<button className="playBtn" onClick={playAgain} > Play Again </button> 
 </div> 
 ) 
