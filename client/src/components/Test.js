@@ -1,12 +1,13 @@
 import React from 'react';
 import MenuAppBar from './Header'
+import Quiz from './quiz/testIndex' 
 
 const Test = () => {
     return (
         <>
         <MenuAppBar />
         <div>
-            <h1>TEST PAGE</h1>
+            <Quiz />
         </div>
         </>
     )
