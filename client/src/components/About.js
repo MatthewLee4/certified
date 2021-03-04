@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   
     padding: theme.spacing(8, 0, 6),
     fontFamily: 'marker felt',
-    fontSize: 35,
+    fontSize: 20,
     color: '#12263a',
     paddingTop: 10,
   },

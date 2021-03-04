@@ -85,17 +85,31 @@ resetForm = () => {
     //   };
 
     return (
-<div className= "formbox">
-      <MenuAppBar />
+<div>
+<MenuAppBar />
+<br></br>
+<br></br>
 
-     <div className= "herocontent"> 
-       <h1> Need to get in touch?</h1>
+<div className= "mformbox">  
+
+
+
+<div className= "whitebox">
+
+<div className= "herocontent"> 
+        Need to get in touch?
      </div>
+
+
 
      <div className= "herocontenttwo"> 
        <h2> We are here to answer all of your questions.</h2>
        <h2> Please fill out the form and we will get in touch as soon as possible.</h2>
      </div>
+
+
+</div>
+
 
 
 
@@ -165,7 +179,8 @@ resetForm = () => {
         </div>
       </form>
 </div>
-    //   </div>
+</div>
+    
     );
   }
 }
