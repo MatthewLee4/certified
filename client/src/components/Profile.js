@@ -9,13 +9,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
-import avatar from '../assets/avatar.png'
-// import badge from '../assets/badge.jpg'
-// import firstbadge from '../assets/firstbadge.png'
+import userIcon from '../assets/usericoncamera.png';
+import badge from '../assets/badge.jpg'
+import firstbadge from '../assets/firstbadge.png'
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import { connect } from "react-redux"
-import ImageList from '@material-ui/core/ImageList';
+import { ImageList } from '@material-ui/core';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 // import ListSubheader from '@material-ui/core/ListSubheader';
@@ -27,10 +27,12 @@ import InfoIcon from '@material-ui/icons/Info';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    paddingLeft:210,
   },
   rootCard1: {
     width: 300,
-    margin: "auto"
+    margin: "auto",
+   
   },
   rootCard2: {
     flexDirection: "row",
@@ -38,10 +40,20 @@ const useStyles = makeStyles((theme) => ({
     marginBottom:15,
     // margin: "auto"
   },
+  rootCard3: {
+    flexDirection: "row",
+    width: 800,
+    marginBottom:15,
+   
+
+    // margin: "auto"
+  },
   paper: {
-    padding: theme.spacing(2),
+    paddingTop: 20,
+    paddingBottom: 40,
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    fontFamily: "marker felt",
+    color: "#12263A",
   },
   title: {
     fontSize: 14,
@@ -56,12 +68,25 @@ const useStyles = makeStyles((theme) => ({
     color:'black'
 },
 titles: {
-  fontSize: 50,
-  backgroundColor: "red",
+  fontFamily: 'lato',
+  fontSize: 35,
+  color: '#12263a',
+  
+},
+titles2: {
+  fontFamily: 'lato',
+  fontSize: 35,
+  color: '#12263a',
+  marginLeft: 20,
+  paddingTop: 15,
+  
 },
 listimages: {
-  width: 500,
-  height: 450,
+  flexDirection: "row",
+  width: 800,
+  margin: 18,
+  // width: 500,
+  // height: 450,
 },
 icon: {
   color: 'rgba(255, 255, 255, 0.54)',
@@ -70,21 +95,17 @@ icon: {
  
 }));
 
+
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
-    author: '@southside_customs',
+    img: "https://i.ibb.co/DgVdqp3/firstbadge.png",
+    title: 'CERTIFIED : Sports',
+    author: 'March 2, 2021',
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-    author: '@rollelflex_graphy726',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-    author: '@helloimnik',
+    img: 'https://i.ibb.co/MBPy2ds/sportsbadge.png',
+    title: 'CERTIFIED : Politics',
+    author: 'March 3, 2021',
   },
 ];
 
@@ -100,7 +121,7 @@ const Profile = ( props ) =>  {
     <div>
         <MenuAppBar />
         <div className={classes.paper}>
-                <h1>Account</h1>
+                <h1>Profile and Account Settings</h1>
         </div>
 
         <div className={classes.root}>
@@ -112,7 +133,7 @@ const Profile = ( props ) =>  {
                         <CardMedia
                             component="img"
                             height="300"
-                            image={avatar}
+                            image={userIcon}
                             title="Avatar Icon"
                         />
                         <Typography variant="h3" component="h2" >
@@ -122,7 +143,14 @@ const Profile = ( props ) =>  {
                         {props.user.user.email}
                         </Typography>
                         <Typography variant="h6" component="p">
-                        Test Taken: 
+                        <br></br>
+                        Tests Attempted: 
+                        <br></br>
+                        Sports
+                        <br></br>
+                        Politics
+                        <br></br>
+                        History
                         </Typography>
                     </CardContent>
                     </Card>
@@ -132,9 +160,9 @@ const Profile = ( props ) =>  {
                 <Grid item xs={8}>
                     <Card className={classes.rootCard2}>
                         <CardContent>
-                            <Typography variant="h3" component="h2">
+                            <div className = {classes.titles}>
                             Information
-                            </Typography>
+                            </div>
                             <Link href="#" onClick={_toggleIsEditIn}>
                                 Edit
                             </Link>
@@ -152,39 +180,48 @@ const Profile = ( props ) =>  {
                                 value="props.user.password" autoComplete="password" autoFocus />} */}
 
                                 {isEditIn ? <Button type="submit" className={classes.submit}
-                                 variant="contained" color="secondary">Save</Button> : ""}
+                                 variant="contained" color="primary">Save</Button> : ""}
                             </form>
                         </CardContent>
                     </Card>
+
+
+                    <Card className={classes.rootCard3}>
+                    <div className = {classes.titles2}>
+                            Badges Earned
+                            </div>
+                    <ImageList className={classes.listimages}>  
+
+{itemData.map((item) => (
+  <ImageListItem key={item.img}>
+    <img
+      srcSet={`${item.img}?w=248&fit=crop&auto=format 1x,
+          ${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+      alt={item.title}
+    />
+    <ImageListItemBar
+      title={item.title}
+      subtitle={item.author}
+      actionIcon={
+        <IconButton
+          aria-label={`info about ${item.title}`}
+          className={classes.icon}
+        >
+          <InfoIcon />
+        </IconButton>
+      }
+    />
+  </ImageListItem>
+))}
+</ImageList>
+                    </Card>               
+
                     </Grid>
 
                     </Grid>
 
 </div>
-      <ImageList className={classes.listimages}>  
-
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            srcSet={`${item.img}?w=248&fit=crop&auto=format 1x,
-                ${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-          />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={item.author}
-            actionIcon={
-              <IconButton
-                aria-label={`info about ${item.title}`}
-                className={classes.icon}
-              >
-                <InfoIcon />
-              </IconButton>
-            }
-          />
-        </ImageListItem>
-      ))}
-     </ImageList>
+     
     </div> 
      )      
             
@@ -206,6 +243,6 @@ const mapStateToProps = ( state, ownProps) => {
 //       dispatch(newUser( payload ))
 //     }
 //   }
-// };
+// };b
 
 export default connect( mapStateToProps, null )( Profile );
