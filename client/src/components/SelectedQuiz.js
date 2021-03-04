@@ -3,12 +3,13 @@ import MenuAppBar from './Header'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import Quiz from './Quiz'
+import Result from './Results'
 
 //const [newAnswers,setNewAnswers] = useState([]);
 let quizQuestions = []
 
 function SelectedQuiz(props) {
-    
+
     componentDidMount = () => {
         const shuffledAnswerOptions = quizQuestions.map(question =>
           this.shuffleArray(question.answers)
@@ -18,7 +19,7 @@ function SelectedQuiz(props) {
           answerOptions: shuffledAnswerOptions[0]
         });
       }
-    
+
     return (
         <div>
             {this.state.result ? this.renderResult() : this.renderQuiz()}
