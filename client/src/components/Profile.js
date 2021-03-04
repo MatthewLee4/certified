@@ -54,9 +54,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontFamily: "marker felt",
     color: "#12263A",
-  },
-  title: {
-    fontSize: 14,
+    fontSize: 20
   },
   pos: {
     marginBottom: 12,

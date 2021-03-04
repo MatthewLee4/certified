@@ -3,17 +3,11 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 padding-top: 5vh;
-color: 'pink';
+color: chartreuse;
 padding-left: 25vw;
 padding-right: 25vw;
 }
-.outer{
-    background-color: green;
-}
 
-.inner{
-    /* background-color: purple; */
-}
 
 .button--container {
     display:flex;
@@ -30,28 +24,39 @@ padding-right: 25vw;
     padding-bottom: 10px;
 }
 
-.textfield {
-    
-
-}
-
 .herocontent { 
-    padding-top: 10px;
+    padding-top: 20px;
     text-align: center;
     font-family: "marker felt";
     color: #12263A;
+    font-size: 40px;
+    font-weight: bold;
+  
   }
 
   .herocontenttwo { 
     text-align: center;
     font-family: "lato";
     color: #12263A;
+ 
   }
 
-  .formbox{ 
- background-color: #F4EDEA;
+.mformbox{ 
+ background-color:#F4EDEA;
  padding-bottom: 50px;
+ margin-left: 10%;
+ margin-right: 10%;
+
+
 
   }
+
+  .whitebox{
+      
+      padding-bottom: 50px;
+      background-color: white;
+
+  }
+
 
  
