@@ -1,5 +1,5 @@
 import React from 'react'; 
-import "../style.css"; 
+import "../stylequiz.css"; 
 
 const Result = ({score, playAgain}) => ( 
 <div className="score-board"> 

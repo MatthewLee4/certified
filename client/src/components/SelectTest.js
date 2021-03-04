@@ -49,11 +49,16 @@ const useStyles = makeStyles((theme) => ({
     paper: { // Title and caption
         textAlign: 'center',
         fontFamily: 'marker felt',
-        fontSize: 35,
+        fontSize: 40,
         color: '#12263a',
-        padding: 1,
+        fontWeight: 'bold',
         // backgroundColor: "#f4edea",
-       
+        paddingTop: 20,
+        // text-align: center;
+        // font-family: "marker felt";
+        // color: #12263A;
+        // font-size: 40px;
+        // font-weight: bold;
         
     },
 
@@ -111,7 +116,7 @@ const SelectTest = (props) => {
             <MenuAppBar /> 
 
             <div className={classes.paper}>
-                <h1>Welcome {props.user.user.name} !</h1>
+                <div className={classes.paper}>Welcome {props.user.user.name} !</div>
                 <h4> 
                     Select a Category
                 </h4>

@@ -1,6 +1,6 @@
 import React ,{ Component } from "react";
 // import ReactDOM from "react-dom";
-import "./style.css";
+import "./stylequiz.css";
 import questionAPI from './components/indexapi';
 import QuestionBox from "./components/Questions";
 import Result from './components/Results';

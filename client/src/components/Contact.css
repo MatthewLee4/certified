@@ -25,9 +25,10 @@ padding-right: 25vw;
 }
 
 .herocontent { 
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 12px;
     text-align: center;
-    font-family: "marker felt";
+    font-family: "lato";
     color: #12263A;
     font-size: 40px;
     font-weight: bold;
@@ -53,7 +54,7 @@ padding-right: 25vw;
 
   .whitebox{
       
-      padding-bottom: 50px;
+      padding-bottom: 30px;
       background-color: white;
 
   }
