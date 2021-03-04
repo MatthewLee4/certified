@@ -9,6 +9,16 @@ let quizQuestions = []
 
 function SelectedQuiz(props) {
     
+    componentDidMount = () => {
+        const shuffledAnswerOptions = quizQuestions.map(question =>
+          this.shuffleArray(question.answers)
+        );
+        this.setState({
+          question: quizQuestions[0].question,
+          answerOptions: shuffledAnswerOptions[0]
+        });
+      }
+    
     return (
         <div>
             {this.state.result ? this.renderResult() : this.renderQuiz()}
