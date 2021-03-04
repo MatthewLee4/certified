@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import MenuAppBar from './Header'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import Quiz from './Quiz'
@@ -10,14 +11,7 @@ function SelectedQuiz(props) {
     
     return (
         <div>
-        <Quiz
-        answer={this.state.answer}
-        answerOptions={this.state.answerOptions}
-        questionId={this.state.questionId}
-        question={this.state.question}
-        questionTotal={quizQuestions.length}
-        onAnswerSelected={this.handleAnswerSelected}
-      />         
+            {this.state.result ? this.renderResult() : this.renderQuiz()}
         </div>
     )
 }
@@ -63,8 +57,76 @@ shuffleArray = (array) => {
     return array;
   };
 
+handleAnswerSelected = (event) => {
+    this.setUserAnswer(event.currentTarget.value);
 
-const mapStateToProps = (state,ownProps) => {
+    if (this.state.questionId < quizQuestions.length) {
+      setTimeout(() => this.setNextQuestion(), 300);
+    } else {
+      setTimeout(() => this.setResults(this.getResults()), 300);
+    }
+  }
+
+setUserAnswer = (answer) => {
+    this.setState((state, props) => ({
+      answersCount: {
+        ...state.answersCount,
+        [answer]: (state.answersCount[answer] || 0) + 1
+      },
+      answer: answer
+    }));
+  }
+
+setNextQuestion = () => {
+    const counter = this.state.counter + 1;
+    const questionId = this.state.questionId + 1;
+
+    this.setState({
+      counter: counter,
+      questionId: questionId,
+      question: quizQuestions[counter].question,
+      answerOptions: quizQuestions[counter].answers,
+      answer: ''
+    });
+  }
+
+  getResults =() => {
+    const answersCount = this.state.answersCount;
+    const answersCountKeys = Object.keys(answersCount);
+    const answersCountValues = answersCountKeys.map(key => answersCount[key]);
+    const maxAnswerCount = Math.max.apply(null, answersCountValues);
+
+    return answersCountKeys.filter(key => answersCount[key] === maxAnswerCount);
+  }
+
+  renderResult = () => {
+    return <Result quizResult={this.state.result} />;
+  }
+
+  renderQuiz = () => {
+    return (
+      <Quiz
+        answer={this.state.answer}
+        answerOptions={this.state.answerOptions}
+        questionId={this.state.questionId}
+        question={this.state.question}
+        questionTotal={quizQuestions.length}
+        onAnswerSelected={this.handleAnswerSelected}
+      />
+    );
+  }
+
+  setResults = (result) => {
+    if (result.length === 1) {
+      this.setState({ result: result[0] });
+    } else {
+      this.setState({ result: 'Undetermined' });
+    }
+  }
+
+
+
+  const mapStateToProps = (state,ownProps) => {
     return {
         test: state.testCategory
     }
@@ -77,6 +139,10 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+
+
+
+
 export default connect(mapStateToProps,mapDispatchToProps)(SelectedQuiz)
 //export default SelectedQuiz
 

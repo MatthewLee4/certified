@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme, MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 // import Typography from "@material-ui/core/Typography";
@@ -11,6 +11,8 @@ import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
 import logo from "../assets/logo.png"
+import white from '@material-ui/core/colors/common';
+//primary: '#11827C'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,20 +37,19 @@ const useStyles = makeStyles(theme => ({
   },
   buttons: {
     display: "flex",
-    backgroundColor: "#F4D1AE",
+    backgroundColor: "#0da39f",
     justifyContent: "space-evenly",
     marginLeft: 10,
     marginRight: 10,
-    fontFamily: 'Bradley Hand',
+    fontFamily: 'Roboto',
     fontSize: 20,
-
   },
   logo: {
     maxWidth: 100,
     paddingBottom: 5
   },
   title: {
-    fontFamily: 'Bradley Hand',
+    fontFamily: 'Roboto',
     fontSize: 35,
   }
 
@@ -112,9 +113,7 @@ const Header = props => {
       <AppBar className={classes.root} position="static">
         <Toolbar>
           <img src={logo} alt="logo" className={classes.logo} onClick={() => handleButtonClick("/select")} />
-          <h1 className={classes.title} onClick={() => handleButtonClick("/select")}>
-            Certified
-          </h1>
+          <h1 className={classes.title} onClick={() => handleButtonClick("/select")}></h1>
           {isMobile ? (
             <>
               <IconButton
@@ -153,25 +152,25 @@ const Header = props => {
             </>
           ) : (
             <div className={classes.headerOptions}>
-              <Button className={classes.buttons}
+              <Button color="primary"  className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/profile")}
               >
                 PROFILE
               </Button>
-              <Button className={classes.buttons}
+              <Button color="primary" className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/about")}
               >
                 ABOUT
               </Button>
-              <Button className={classes.buttons}
+              <Button color="primary" className={classes.buttons}
                 variant="contained"
                 onClick={() => handleButtonClick("/contact")}
               >
                 CONTACT
               </Button>
-              <Button  className={classes.buttons}
+              <Button  color="primary" className={classes.buttons}
                 variant="contained"
                 onClick={() => handleSubmitClick()}
               >
