@@ -70,7 +70,7 @@ footer: {
   gridcont: { // background tiles sit on
     display: 'flex',
     margin: 'auto',
-    backgroundColor: "#f4edea",
+    backgroundColor: "#06bcc1",
     maxWidth: 1750,
     
     
@@ -117,7 +117,8 @@ const SelectTest = (props) => {
                 </h4>
             </div>
 
-            <Grid className={classes.gridcont}
+           
+            <Grid className={classes.gridcont} 
                 container
                 spacing={0}
                 direction="column"
@@ -184,6 +185,7 @@ const SelectTest = (props) => {
                     </Grid>
                 </Grid>
             </Grid>             
+
 
 {/* Footer */}
 <footer className={classes.footer}>
