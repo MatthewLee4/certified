@@ -70,7 +70,7 @@ footer: {
   gridcont: { // background tiles sit on
     display: 'flex',
     margin: 'auto',
-    backgroundColor: "#06bcc1",
+    backgroundColor: "#f4edea",
     maxWidth: 1750,
     
     
