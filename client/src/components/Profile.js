@@ -133,7 +133,7 @@ const Profile = ( props ) =>  {
                         <CardMedia
                             component="img"
                             height="300"
-                            image={userIcon}
+                            img src={'https://i.ibb.co/Hd25Tpk/usericoncamerasm.png'} 
                             title="Avatar Icon"
                         />
                         <Typography variant="h3" component="h2" >
@@ -163,6 +163,9 @@ const Profile = ( props ) =>  {
                             <div className = {classes.titles}>
                             Information
                             </div>
+                            
+                            <br></br>
+
                             <Link href="#" onClick={_toggleIsEditIn}>
                                 Edit
                             </Link>
@@ -190,6 +193,8 @@ const Profile = ( props ) =>  {
                     <div className = {classes.titles2}>
                             Badges Earned
                             </div>
+                            <br></br>
+                            <br></br>
                     <GridList className={classes.listimages}>  
 
 {itemData.map((item) => (
